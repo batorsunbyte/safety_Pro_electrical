@@ -17,6 +17,7 @@ export const SITE = {
     phoneHref: 'tel:+61490101365',
     email: 'safetypro.electrical@gmail.com',
     emailHref: 'mailto:safetypro.electrical@gmail.com',
+    whatsappHref: 'https://wa.me/61490101365',
 
     // ---- Location / service region ----
     baseSuburb: 'Cranbourne East',
@@ -62,6 +63,10 @@ export const SITE = {
     url: 'https://safetyproelectrical.com.au',
     locale: 'en_AU',
 
+    // Web3Forms access key for the quote form. Empty = form falls back to
+    // WhatsApp. Set in Welle 4 so submissions email Arif directly (free, no backend).
+    formAccessKey: '',
+
     // ---- Socials (add when available) ----
     socials: {
         facebook: '',
@@ -74,5 +79,5 @@ export const SITE = {
 export const CTA = {
     callLabel: `Call ${SITE.phoneDisplay}`,
     quoteLabel: 'Request a Free Quote',
-    quoteHref: '/contact/#quote',
+    quoteHref: '/#quote',
 }

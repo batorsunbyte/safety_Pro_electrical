@@ -10,7 +10,7 @@ const NAV = [
     { label: 'Service Areas', href: '/#areas' },
     { label: 'Why Us', href: '/#why' },
     { label: 'Reviews', href: '/#reviews' },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'Contact', href: '/#quote' },
 ]
 
 export default function Header() {

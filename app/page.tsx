@@ -2,17 +2,30 @@ import Link from 'next/link'
 import { SITE, CTA } from '@/lib/site'
 import { SERVICES } from '@/data/services'
 import { PRIORITY_SUBURBS, ALSO_SERVICING } from '@/data/suburbs'
+import { HOME_FAQS } from '@/data/faqs'
+import { faqSchema } from '@/lib/schema'
 import { LogoMark } from '@/components/Logo'
 import ServiceIcon from '@/components/ServiceIcon'
+import WhyUs from '@/components/WhyUs'
+import Steps from '@/components/Steps'
+import Reviews from '@/components/Reviews'
+import Faq from '@/components/Faq'
+import QuoteForm from '@/components/QuoteForm'
+import JsonLd from '@/components/JsonLd'
 
 export default function HomePage() {
     return (
         <>
+            <JsonLd data={faqSchema(HOME_FAQS)} />
             <Hero />
             <TrustBar />
             <ServicesPreview />
+            <WhyUs />
+            <Steps />
+            <Reviews />
             <AreasTeaser />
-            <ClosingCta />
+            <QuoteSection />
+            <Faq faqs={HOME_FAQS} />
         </>
     )
 }
@@ -212,26 +225,41 @@ function AreasTeaser() {
 
 /* ------------------------------------------------------------------ */
 
-function ClosingCta() {
+function QuoteSection() {
     return (
-        <section id="contact" className="section scroll-mt-24 bg-navy-900 text-white">
-            <div className="container-x text-center">
-                <h2 className="mx-auto max-w-2xl text-3xl text-white sm:text-4xl">
-                    Get a fast, no-obligation quote today
-                </h2>
-                <p className="mx-auto mt-4 max-w-xl text-lg text-white/70">
-                    Call now and speak directly with a licensed electrician, or request a quote and
-                    we&apos;ll get back to you quickly.
-                </p>
-                <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                    <a href={SITE.phoneHref} className="btn-call text-lg">
-                        <PhoneIcon className="h-5 w-5" />
-                        {CTA.callLabel}
-                    </a>
-                    <Link href={CTA.quoteHref} className="btn-ghost-light text-lg">
-                        {CTA.quoteLabel}
-                    </Link>
+        <section id="quote" className="section scroll-mt-24 bg-mist">
+            <div className="container-x grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+                <div>
+                    <span className="eyebrow">Get in touch</span>
+                    <h2 className="mt-3 text-3xl sm:text-4xl">Request your free quote</h2>
+                    <p className="mt-4 text-lg text-navy-700/80">
+                        Fill in a few details and we&apos;ll get back to you fast with an honest,
+                        no-obligation quote. Prefer to talk? Call Arif directly — we answer the phone.
+                    </p>
+
+                    <ul className="mt-8 space-y-3">
+                        {['Free, no-obligation quotes', 'No call-out fee on quoted jobs', 'Fully licensed & insured', 'Fast, friendly local response'].map((t) => (
+                            <li key={t} className="flex items-center gap-3 text-navy-800">
+                                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-safety-green/15 text-safety-green">
+                                    <Tick />
+                                </span>
+                                {t}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a href={SITE.phoneHref} className="btn-call">
+                            <PhoneIcon className="h-5 w-5" />
+                            {CTA.callLabel}
+                        </a>
+                        <a href={SITE.whatsappHref} target="_blank" rel="noopener" className="btn-ghost">
+                            WhatsApp us
+                        </a>
+                    </div>
                 </div>
+
+                <QuoteForm />
             </div>
         </section>
     )

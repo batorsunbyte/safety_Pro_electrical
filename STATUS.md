@@ -28,8 +28,8 @@ electrician based in Cranbourne East, servicing South-East Melbourne.
 | Wave | Scope | Status |
 |------|-------|--------|
 | **0 – Foundation** | Scaffold, brand tokens, `lib/site.ts`, Header/Footer, mobile call bar, SEO + JSON-LD, hero + home preview | ✅ Done |
-| **1 – Home** | Full home sections: services grid, why-us, real reviews, 4-field quote form, FAQ, trust block, CTA | ⏳ Next |
-| **2 – Services** | 6 individual service pages with copy + schema + FAQ | ⬜ |
+| **1 – Home** | Full home sections: services grid, why-us, real reviews, 4-field quote form, FAQ, trust block, CTA | ✅ Done |
+| **2 – Services** | 6 individual service pages with copy + schema + FAQ | ⏳ Next |
 | **3 – Service Areas** | 8 priority suburb pages with unique local copy | ⬜ |
 | **4 – About / Reviews / Contact** | Story, trust, contact page + form delivery (email/SMS) | ⬜ |
 | **5 – Polish** | Perf, WebP, a11y, OG/favicon assets, sitemap.xml/robots.txt, GBP guide | ⬜ |
@@ -75,4 +75,27 @@ electrician based in Cranbourne East, servicing South-East Melbourne.
 - Real reviews list, quote form, why-us, FAQ → Wave 1.
 - favicon.ico / og-image.png / apple-icon.png → Wave 5 (needs final assets).
 
-**Next:** Wave 1 — build out the full homepage.
+### Wave 1 — Home ✅
+**What works:**
+- Full conversion-focused homepage: Hero → Trust bar → Services → Why-us → How-it-works →
+  Reviews → Service areas → Quote form → FAQ.
+- **9 real, curated customer reviews** (from Arif's hipages profile, attributed) with a spread
+  of services + suburbs — genuine social proof, no fabrication.
+- **Quote form** works today: falls back to a pre-filled WhatsApp message (zero backend). Ready
+  to switch to Web3Forms email delivery in Wave 4 via `SITE.formAccessKey`.
+- **FAQ** accordion + `FAQPage` JSON-LD (rich-result eligible).
+- Build clean, first-load JS ~101 kB. Verified desktop (1440) + mobile (390).
+
+**Decisions made (autonomous):**
+- Section components (`WhyUs`, `Steps`, `Reviews`, `QuoteForm`, `Faq`) are reusable — they'll
+  be dropped onto service + suburb pages in Waves 2–3 without rework.
+- Reviews shown with hipages attribution; deliberately **no** self-serving per-review schema on
+  our own domain (Google-compliant). `aggregateRating` stays honest in LocalBusiness schema.
+- Quote CTA + nav "Contact" now anchor to the on-page `#quote` form (a dedicated /contact page
+  comes in Wave 4).
+
+**Reminder — Gleis B (Arif's own task, biggest organic lever):** create Google Business Profile
++ ask past customers for Google reviews. Claude delivers the step-by-step guide + WhatsApp
+templates in Wave 5.
+
+**Next:** Wave 2 — 6 individual service pages.
