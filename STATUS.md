@@ -29,9 +29,9 @@ electrician based in Cranbourne East, servicing South-East Melbourne.
 |------|-------|--------|
 | **0 – Foundation** | Scaffold, brand tokens, `lib/site.ts`, Header/Footer, mobile call bar, SEO + JSON-LD, hero + home preview | ✅ Done |
 | **1 – Home** | Full home sections: services grid, why-us, real reviews, 4-field quote form, FAQ, trust block, CTA | ✅ Done |
-| **2 – Services** | 6 individual service pages with copy + schema + FAQ | ⏳ Next |
-| **3 – Service Areas** | 8 priority suburb pages with unique local copy | ⬜ |
-| **4 – About / Reviews / Contact** | Story, trust, contact page + form delivery (email/SMS) | ⬜ |
+| **2 – Services** | 6 individual service pages with copy + schema + FAQ | ✅ Done |
+| **3 – Service Areas** | 8 priority suburb pages with unique local copy | ✅ Done |
+| **4 – About / Reviews / Contact** | Story, trust, contact page + form delivery (email/SMS) | ⏳ Next |
 | **5 – Polish** | Perf, WebP, a11y, OG/favicon assets, sitemap.xml/robots.txt, GBP guide | ⬜ |
 
 ---
@@ -98,4 +98,13 @@ electrician based in Cranbourne East, servicing South-East Melbourne.
 + ask past customers for Google reviews. Claude delivers the step-by-step guide + WhatsApp
 templates in Wave 5.
 
-**Next:** Wave 2 — 6 individual service pages.
+### Waves 2 & 3 — Service + Suburb pages ✅
+- **6 service pages** (`/services/[slug]`) + services index — each with unique intro, "what we
+  help with", reassurance, 3 service-specific FAQs (+ FAQPage schema), reviews, areas strip,
+  cross-links, Service + Breadcrumb schema, unique meta.
+- **8 suburb pages** (`/service-areas/[slug]`) + areas index — unique local angle per suburb,
+  suburb-matched reviews (fall back to general), per-suburb FAQs, nearby-area links, unique meta.
+- Reusable `Breadcrumbs` + `CtaBand`; `Reviews` now parametrised (subset/heading/filter).
+- 20 static pages total, build clean.
+
+**Next:** Wave 4 — About, Reviews and Contact pages + form email delivery.
