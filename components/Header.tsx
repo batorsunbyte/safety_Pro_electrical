@@ -6,11 +6,11 @@ import { SITE, CTA } from '@/lib/site'
 import { Logo } from './Logo'
 
 const NAV = [
-    { label: 'Services', href: '/#services' },
-    { label: 'Service Areas', href: '/#areas' },
-    { label: 'Why Us', href: '/#why' },
-    { label: 'Reviews', href: '/#reviews' },
-    { label: 'Contact', href: '/#quote' },
+    { label: 'Services', href: '/services/' },
+    { label: 'Service Areas', href: '/service-areas/' },
+    { label: 'Reviews', href: '/reviews/' },
+    { label: 'About', href: '/about/' },
+    { label: 'Contact', href: '/contact/' },
 ]
 
 export default function Header() {

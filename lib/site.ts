@@ -79,5 +79,5 @@ export const SITE = {
 export const CTA = {
     callLabel: `Call ${SITE.phoneDisplay}`,
     quoteLabel: 'Request a Free Quote',
-    quoteHref: '/#quote',
+    quoteHref: '/contact/#quote',
 }
