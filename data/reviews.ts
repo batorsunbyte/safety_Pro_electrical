@@ -127,3 +127,35 @@ export function reviewsForSuburb(suburbName: string): Review[] {
         return s.includes(n) || n.includes(s)
     })
 }
+
+// Which review `service` labels prove which service page (matched case-insensitively).
+// Keyword ORDER = relevance: earlier keywords rank their matches first.
+const SERVICE_KEYWORDS: Record<string, string[]> = {
+    'emergency-electrician': ['emergency', 'repairs'],
+    'switchboard-upgrades': ['switchboard', 'circuit'],
+    'safety-switches-smoke-alarms': ['smoke', 'sensor'],
+    'ev-charger-installation': ['ev charger'],
+    'lighting-power-points': ['lighting', 'power points'],
+    'rewiring-renovations': ['rewiring', 'installations', 'circuit'],
+}
+
+/**
+ * Reviews that match a service page (by slug), ranked by keyword priority
+ * and topped up with general reviews so callers always get `count` items.
+ * `matchedCount` tells the caller how many are genuine matches (e.g. to
+ * soften an "about this work" heading when padding was needed).
+ */
+export function reviewsForService(
+    slug: string,
+    count = 3,
+): { reviews: Review[]; matchedCount: number } {
+    const keywords = SERVICE_KEYWORDS[slug] ?? []
+    const rank = (r: Review) =>
+        keywords.findIndex((k) => r.service.toLowerCase().includes(k))
+    const matches = REVIEWS.filter((r) => rank(r) !== -1).sort((a, b) => rank(a) - rank(b))
+    const rest = REVIEWS.filter((r) => rank(r) === -1)
+    return {
+        reviews: [...matches, ...rest].slice(0, count),
+        matchedCount: Math.min(matches.length, count),
+    }
+}

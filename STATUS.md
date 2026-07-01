@@ -123,6 +123,24 @@ templates in Wave 5.
 **Status: all 5 waves complete.** Remaining items are content/config (see go-live checklist),
 not build work.
 
+### CRO round 2 — copy, ordering & review-verified fixes ✅
+Implemented the remaining verified backlog, then ran a 3-lens/18-agent review over the diff
+(12 findings confirmed) and fixed everything:
+- **Hero rewritten**: H1 leads with benefit + place ("Fast, honest electrical work across
+  South-East Melbourne."), recommendation claim moved to the subhead, response promise under the
+  CTAs; mobile hero tightened (CTAs + rating above the fold at 390px).
+- **Service pages**: quote form now sits directly after the reviews (peak intent); reviews are
+  service-matched AND keyword-ranked (emergency page leads with the emergency review, lighting
+  page shows the lighting review); heading only claims "this work" when all 3 reviews match.
+- **No duplicate testimonials**: QuoteBlock takes `excludeNames` so its proof quote can never
+  repeat a review already shown above (was duplicated on 3 service pages after the reorder).
+- **Header strip fixed**: phone number can no longer wrap to two lines on phones (nowrap +
+  truncating label), tap target enlarged, right-edge alignment corrected.
+- **Copy de-duplicated**: "most quotes within the hour" 5→3 visible uses, each section makes a
+  distinct promise again ("often same-day" restored to WhyUs + QuoteBlock).
+- Suburb page `<title>` no longer doubles the brand suffix (SERP polish).
+- Steps section ends with a compact ask card (call + quote), `md:` breakpoint so it never squeezes.
+
 ### CRO round — conversion optimisation ✅ (from a multi-agent audit)
 Ran a 6-dimension CRO audit (43 agents, each finding adversarially verified). Honest reality
 check: 50% enquiry rate isn't achievable on cold traffic — realistic is **8–15% overall**,

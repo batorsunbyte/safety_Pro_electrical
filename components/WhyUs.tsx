@@ -13,7 +13,7 @@ const REASONS = [
     },
     {
         title: 'Fast Local Response',
-        body: `Based in ${SITE.baseSuburb}, we respond quickly across South-East Melbourne — often same-day, with 24/7 emergency call-outs.`,
+        body: `Based in ${SITE.baseSuburb}, covering all of South-East Melbourne — often same-day, with 24/7 emergency call-outs.`,
         icon: 'clock',
     },
     {

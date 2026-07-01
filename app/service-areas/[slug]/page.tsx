@@ -23,7 +23,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     const s = getSuburb(params.slug)
     if (!s) return {}
     return {
-        title: `Electrician ${s.name} | Safety Pro Electrical`,
+        title: `Electrician ${s.name}`,
         description: `Licensed A-Grade electrician servicing ${s.name} (${s.council}). Emergency call-outs, switchboards, EV chargers, safety switches, lighting & rewiring. 4.7★ rated. Call ${SITE.phoneDisplay}.`,
         alternates: { canonical: `/service-areas/${s.slug}/` },
         openGraph: {
@@ -145,6 +145,7 @@ export default function SuburbPage({ params }: { params: { slug: string } }) {
                 heading={`Get a quote in ${suburb.name}`}
                 subtitle={`Tell us what you need in ${suburb.name} and we'll get back to you fast with an honest, no-obligation quote.`}
                 defaultSuburb={suburb.name}
+                excludeNames={reviews.map((r) => r.name)}
             />
 
             {/* Nearby areas */}

@@ -1,3 +1,5 @@
+import { SITE, CTA } from '@/lib/site'
+
 const STEPS = [
     {
         n: '1',
@@ -40,6 +42,21 @@ export default function Steps() {
                             <p className="mt-2 text-navy-700/75">{s.body}</p>
                         </div>
                     ))}
+                </div>
+
+                {/* Ask at the moment the process feels easy */}
+                <div className="card mt-12 flex flex-col items-center gap-4 p-6 text-center md:flex-row md:justify-between md:text-left">
+                    <p className="text-lg font-semibold text-navy-900">
+                        Step 1 takes two minutes — and most quotes come back within the hour.
+                    </p>
+                    <div className="flex flex-shrink-0 flex-col gap-3 sm:flex-row">
+                        <a href={SITE.phoneHref} className="btn-call !px-4 !py-2.5 text-sm">
+                            Call {SITE.phoneDisplay}
+                        </a>
+                        <a href="#quote" className="btn-ghost !px-4 !py-2.5 text-sm">
+                            {CTA.quoteLabel}
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

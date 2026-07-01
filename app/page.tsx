@@ -28,7 +28,7 @@ export default function HomePage() {
             <Reviews reviews={REVIEWS.slice(0, 6)} moreHref="/reviews/" />
             <CtaBand heading="Ready to sort your electrical job?" quoteHref="#quote" />
             <AreasTeaser />
-            <QuoteBlock />
+            <QuoteBlock excludeNames={REVIEWS.slice(0, 6).map((r) => r.name)} />
             <Faq faqs={HOME_FAQS} />
         </>
     )
@@ -44,23 +44,22 @@ function Hero() {
                 style={{ background: 'radial-gradient(circle, #16a6e6 0%, transparent 65%)' }}
             />
             <HeroCircuits />
-            <div className="container-x relative z-10 grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:py-28">
+            <div className="container-x relative z-10 grid items-center gap-12 py-10 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:py-28">
                 <div className="animate-fade-up">
                     <span className="eyebrow !text-cyan-bright">
-                        <BoltDot /> Licensed A-Grade Electricians · {SITE.baseSuburb}
+                        <BoltDot /> Licensed A-Grade Electricians
+                        <span className="hidden sm:inline"> · {SITE.baseSuburb}</span>
                     </span>
-                    <h1 className="mt-5 text-4xl leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-                        The electrician{' '}
-                        <span className="text-cyan-bright">South-East Melbourne</span> keeps
-                        recommending.
+                    <h1 className="mt-4 text-4xl leading-[1.08] text-white sm:text-5xl lg:text-6xl">
+                        Fast, honest electrical work across{' '}
+                        <span className="text-cyan-bright">South-East Melbourne</span>.
                     </h1>
-                    <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
-                        From emergency call-outs and switchboard upgrades to EV chargers and full
-                        rewires — Arif and the team deliver prompt, honest, fully licensed work that
-                        passes every inspection.
+                    <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
+                        From 24/7 emergency call-outs to switchboard upgrades, EV chargers and full
+                        rewires — Arif is the electrician your neighbours keep recommending.
                     </p>
 
-                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                         <a href={SITE.phoneHref} className="btn-call text-lg animate-pulse-ring">
                             <PhoneIcon className="h-5 w-5" />
                             {CTA.callLabel}
@@ -71,10 +70,10 @@ function Hero() {
                     </div>
 
                     <p className="mt-4 text-sm text-white/60">
-                        Upfront fixed-price quotes · Certificate of Electrical Safety on every job
+                        {SITE.responsePromise} · Upfront fixed-price quotes
                     </p>
 
-                    <ul className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
+                    <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
                         <li className="flex items-center gap-2">
                             <Stars /> <span>{SITE.rating.value}★ · {SITE.rating.count} reviews</span>
                         </li>

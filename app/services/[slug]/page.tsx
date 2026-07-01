@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { SITE, CTA } from '@/lib/site'
 import { SERVICES, getService } from '@/data/services'
 import { PRIORITY_SUBURBS } from '@/data/suburbs'
-import { REVIEWS } from '@/data/reviews'
+import { reviewsForService } from '@/data/reviews'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import ServiceIcon from '@/components/ServiceIcon'
 import Breadcrumbs from '@/components/Breadcrumbs'
@@ -38,6 +38,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
     if (!service) notFound()
 
     const others = SERVICES.filter((s) => s.slug !== service.slug)
+    const serviceReviews = reviewsForService(service.slug)
     const crumbs = [
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/services/' },
@@ -137,7 +138,22 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 </div>
             </section>
 
-            <Reviews reviews={REVIEWS.slice(0, 3)} heading={`What customers say about our work`} summary={false} />
+            <Reviews
+                reviews={serviceReviews.reviews}
+                heading={
+                    serviceReviews.matchedCount >= 3
+                        ? 'What customers say about this work'
+                        : 'What customers say about our work'
+                }
+                summary={false}
+            />
+
+            <QuoteBlock
+                heading={`Get a quote for ${service.title}`}
+                subtitle={`Tell us about your ${service.title.toLowerCase()} job and we'll get back to you fast with an honest, no-obligation quote.`}
+                defaultService={service.title}
+                excludeNames={serviceReviews.reviews.map((r) => r.name)}
+            />
 
             {/* Areas */}
             <section className="section bg-white">
@@ -161,12 +177,6 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             </section>
 
             <Faq faqs={service.faqs} heading={`${service.title} — questions & answers`} />
-
-            <QuoteBlock
-                heading={`Get a quote for ${service.title}`}
-                subtitle={`Tell us about your ${service.title.toLowerCase()} job and we'll get back to you fast with an honest, no-obligation quote.`}
-                defaultService={service.title}
-            />
 
             {/* Other services */}
             <section className="section bg-mist">

@@ -36,13 +36,19 @@ export default function Header() {
         <>
             {/* Emergency strip */}
             <div className="bg-navy-900 text-white">
-                <div className="container-x flex h-9 items-center justify-between text-[0.78rem] font-medium">
-                    <span className="flex items-center gap-2">
+                <div className="container-x flex h-9 items-center justify-between gap-3 text-[0.78rem] font-medium">
+                    <span className="flex min-w-0 items-center gap-2">
                         <span className="hidden sm:inline text-cyan-bright">●</span>
-                        24/7 Emergency Electrician · South-East Melbourne
+                        <span className="truncate">
+                            24/7 Emergency Electrician
+                            <span className="hidden sm:inline"> · South-East Melbourne</span>
+                        </span>
                     </span>
-                    <a href={SITE.phoneHref} className="flex items-center gap-1.5 hover:text-cyan-bright">
-                        <PhoneIcon className="h-3.5 w-3.5" />
+                    <a
+                        href={SITE.phoneHref}
+                        className="-mx-2 -my-2 flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap px-2 py-2 hover:text-cyan-bright"
+                    >
+                        <PhoneIcon className="h-4 w-4" />
                         <span className="font-semibold">{SITE.phoneDisplay}</span>
                     </a>
                 </div>

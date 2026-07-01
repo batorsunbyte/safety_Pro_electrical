@@ -12,13 +12,18 @@ export default function QuoteBlock({
     subtitle,
     defaultService = '',
     defaultSuburb = '',
+    excludeNames = [],
 }: {
     heading?: string
     subtitle?: string
     defaultService?: string
     defaultSuburb?: string
+    /** Reviewers already shown on this page — never repeat them as the proof quote. */
+    excludeNames?: string[]
 }) {
-    const proof = REVIEWS.find((r) => r.name.startsWith('Antoinette')) ?? REVIEWS[0]
+    const candidates = REVIEWS.filter((r) => !excludeNames.includes(r.name))
+    const proof =
+        candidates.find((r) => r.name.startsWith('Antoinette')) ?? candidates[0] ?? REVIEWS[0]
 
     return (
         <section id="quote" className="section scroll-mt-24 bg-mist">
@@ -36,7 +41,7 @@ export default function QuoteBlock({
                             'Free, no-obligation quotes',
                             'No call-out fee on quoted jobs',
                             'Fully licensed (A68377) & insured',
-                            SITE.responsePromise,
+                            'Local & quick — often same-day service',
                         ].map((t) => (
                             <li key={t} className="flex items-center gap-3 text-navy-800">
                                 <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-safety-green/15 text-safety-green">
