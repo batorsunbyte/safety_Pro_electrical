@@ -11,6 +11,7 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import Reviews from '@/components/Reviews'
 import Faq from '@/components/Faq'
 import CtaBand from '@/components/CtaBand'
+import QuoteBlock from '@/components/QuoteBlock'
 import JsonLd from '@/components/JsonLd'
 
 export function generateStaticParams() {
@@ -59,17 +60,39 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                         <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan/15 text-cyan-bright">
                             <ServiceIcon name={service.icon} className="h-8 w-8" />
                         </span>
-                        <h1 className="mt-6 text-4xl text-white sm:text-5xl">{service.title}</h1>
+                        {service.emergency && (
+                            <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-red-500/15 px-4 py-1.5 text-sm font-bold uppercase tracking-wide text-red-300">
+                                <span className="h-2 w-2 animate-pulse rounded-full bg-red-400" />
+                                24/7 Emergency — we answer day &amp; night
+                            </span>
+                        )}
+                        <h1 className="mt-4 text-4xl text-white sm:text-5xl">{service.title}</h1>
                         <p className="mt-3 text-xl text-cyan-bright">{service.tagline}</p>
                         <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">{service.intro}</p>
-                        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                            <a href={SITE.phoneHref} className="btn-call text-lg">
-                                {CTA.callLabel}
-                            </a>
-                            <Link href={CTA.quoteHref} className="btn-primary text-lg">
-                                {CTA.quoteLabel}
-                            </Link>
-                        </div>
+
+                        {service.emergency ? (
+                            <div className="mt-8">
+                                <a href={SITE.phoneHref} className="btn-call animate-pulse-ring w-full text-lg sm:w-auto">
+                                    Call Arif now — {SITE.phoneDisplay}
+                                </a>
+                                <p className="mt-3 text-sm text-white/70">
+                                    Day, night, weekends &amp; public holidays. Sparking, a burning smell or no
+                                    power? Don&apos;t wait — call straight away.
+                                </p>
+                                <a href="#quote" className="mt-2 inline-block text-sm font-semibold text-cyan-bright hover:underline">
+                                    Not urgent? Request a quote instead →
+                                </a>
+                            </div>
+                        ) : (
+                            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                                <a href={SITE.phoneHref} className="btn-call text-lg">
+                                    {CTA.callLabel}
+                                </a>
+                                <a href="#quote" className="btn-ghost-light text-lg">
+                                    {CTA.quoteLabel}
+                                </a>
+                            </div>
+                        )}
                     </div>
 
                     <div className="lg:justify-self-end">
@@ -139,6 +162,12 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
 
             <Faq faqs={service.faqs} heading={`${service.title} — questions & answers`} />
 
+            <QuoteBlock
+                heading={`Get a quote for ${service.title}`}
+                subtitle={`Tell us about your ${service.title.toLowerCase()} job and we'll get back to you fast with an honest, no-obligation quote.`}
+                defaultService={service.title}
+            />
+
             {/* Other services */}
             <section className="section bg-mist">
                 <div className="container-x">
@@ -160,7 +189,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 </div>
             </section>
 
-            <CtaBand heading={`Need ${indefinite(service.title)}?`} />
+            <CtaBand heading={`Need ${indefinite(service.title)}?`} quoteHref="#quote" />
         </>
     )
 }

@@ -74,11 +74,11 @@ export default function Header() {
                     </nav>
 
                     <div className="hidden items-center gap-3 lg:flex">
-                        <a href={SITE.phoneHref} className="btn-ghost !px-4 !py-2.5 text-sm">
+                        <a href={SITE.phoneHref} className="btn-call !px-4 !py-2.5 text-sm">
                             <PhoneIcon className="h-4 w-4" />
                             {SITE.phoneDisplay}
                         </a>
-                        <Link href={CTA.quoteHref} className="btn-primary !px-5 !py-2.5 text-sm">
+                        <Link href={CTA.quoteHref} className="btn-ghost !px-5 !py-2.5 text-sm">
                             {CTA.quoteLabel}
                         </Link>
                     </div>

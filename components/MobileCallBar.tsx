@@ -1,18 +1,32 @@
-import Link from 'next/link'
+'use client'
+
+import { usePathname } from 'next/navigation'
 import { SITE, CTA } from '@/lib/site'
 
-/** Fixed bottom action bar on mobile — call is never more than one tap away. */
+/** Pages that render an on-page #quote form (so the Quote button scrolls instead of navigating). */
+function hasOnPageQuote(pathname: string) {
+    const p = pathname.replace(/\/$/, '') || '/'
+    return p === '/' || p === '/contact' || p.startsWith('/services/') || p.startsWith('/service-areas/')
+}
+
+/** Fixed bottom action bar on mobile — a call is never more than one tap away. */
 export default function MobileCallBar() {
+    const pathname = usePathname()
+    const quoteHref = hasOnPageQuote(pathname) ? '#quote' : CTA.quoteHref
+
     return (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-navy-700/10 bg-white/95 p-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_rgba(10,18,32,0.12)] backdrop-blur lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-navy-700/10 bg-white/95 px-2.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5 shadow-[0_-8px_24px_rgba(10,18,32,0.12)] backdrop-blur lg:hidden">
+            <p className="mb-1.5 text-center text-[0.7rem] font-semibold text-navy-700/70">
+                {SITE.rating.value}★ · Licensed A-Grade · Fully insured
+            </p>
             <div className="mx-auto flex max-w-md gap-2.5">
-                <a href={SITE.phoneHref} className="btn-call flex-1 !py-3">
+                <a href={SITE.phoneHref} className="btn-call flex-1 !px-3 !py-3 text-[0.95rem]">
                     <PhoneIcon className="h-5 w-5" />
-                    Call Now
+                    {SITE.phoneDisplay}
                 </a>
-                <Link href={CTA.quoteHref} className="btn-primary flex-1 !py-3">
+                <a href={quoteHref} className="btn-primary flex-1 !px-3 !py-3 text-[0.95rem]">
                     Free Quote
-                </Link>
+                </a>
             </div>
         </div>
     )

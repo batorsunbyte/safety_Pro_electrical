@@ -26,7 +26,7 @@ const NODES = [
 export default function HeroCircuits() {
     return (
         <svg
-            className="pointer-events-none absolute inset-0 h-full w-full"
+            className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
             viewBox="0 0 1440 600"
             preserveAspectRatio="xMidYMid slice"
             aria-hidden="true"

@@ -32,7 +32,7 @@ export default function Reviews({
                                 <p className="mt-1 text-white/70">
                                     {r.count} ratings · {r.hires} hires
                                 </p>
-                                <p className="text-white/45">via {r.source}</p>
+                                <p className="text-white/70">via {r.source}</p>
                             </div>
                         </div>
                     )}
@@ -42,8 +42,17 @@ export default function Reviews({
                     {reviews.map((rev) => (
                         <figure
                             key={`${rev.name}-${rev.date}`}
-                            className="flex flex-col rounded-xl2 border border-white/10 bg-white/[0.04] p-6"
+                            className="flex flex-col overflow-hidden rounded-xl2 border border-white/10 bg-white/[0.04] p-6"
                         >
+                            {rev.image && (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img
+                                    src={rev.image}
+                                    alt={`${rev.service} by Safety Pro Electrical in ${rev.suburb}`}
+                                    loading="lazy"
+                                    className="mb-4 -mx-6 -mt-6 h-40 w-[calc(100%+3rem)] object-cover"
+                                />
+                            )}
                             <Stars />
                             <blockquote className="mt-4 flex-1 text-[0.95rem] leading-relaxed text-white/85">
                                 “{rev.text}”
@@ -51,7 +60,7 @@ export default function Reviews({
                             <figcaption className="mt-5 border-t border-white/10 pt-4">
                                 <div className="flex items-center justify-between">
                                     <span className="font-semibold text-white">{rev.name}</span>
-                                    <span className="text-xs text-white/45">{rev.date}</span>
+                                    <span className="text-xs text-white/70">{rev.date}</span>
                                 </div>
                                 <div className="mt-1 flex items-center justify-between text-xs">
                                     <span className="text-white/60">{rev.suburb}, VIC</span>

@@ -11,6 +11,8 @@ export type Review = {
     date: string
     service: string
     text: string
+    /** Optional job photo path (e.g. '/gallery/switchboard.jpg') — drops in when Arif supplies photos. */
+    image?: string
 }
 
 export const REVIEWS: Review[] = [

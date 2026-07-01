@@ -12,6 +12,7 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import Reviews from '@/components/Reviews'
 import FaqSection from '@/components/Faq'
 import CtaBand from '@/components/CtaBand'
+import QuoteBlock from '@/components/QuoteBlock'
 import JsonLd from '@/components/JsonLd'
 
 export function generateStaticParams() {
@@ -85,9 +86,9 @@ export default function SuburbPage({ params }: { params: { slug: string } }) {
                             <a href={SITE.phoneHref} className="btn-call text-lg">
                                 {CTA.callLabel}
                             </a>
-                            <Link href={CTA.quoteHref} className="btn-primary text-lg">
+                            <a href="#quote" className="btn-ghost-light text-lg">
                                 {CTA.quoteLabel}
-                            </Link>
+                            </a>
                         </div>
                     </div>
 
@@ -140,6 +141,12 @@ export default function SuburbPage({ params }: { params: { slug: string } }) {
                 summary={false}
             />
 
+            <QuoteBlock
+                heading={`Get a quote in ${suburb.name}`}
+                subtitle={`Tell us what you need in ${suburb.name} and we'll get back to you fast with an honest, no-obligation quote.`}
+                defaultSuburb={suburb.name}
+            />
+
             {/* Nearby areas */}
             <section className="section bg-white">
                 <div className="container-x">
@@ -164,6 +171,7 @@ export default function SuburbPage({ params }: { params: { slug: string } }) {
             <CtaBand
                 heading={`Need an electrician in ${suburb.name}?`}
                 subtitle={`Call Arif on ${SITE.phoneDisplay} or request a free quote — fast, friendly, fully licensed.`}
+                quoteHref="#quote"
             />
         </>
     )

@@ -1,13 +1,14 @@
-import Link from 'next/link'
 import { SITE, CTA } from '@/lib/site'
 
 /** Reusable closing CTA band for subpages. */
 export default function CtaBand({
     heading = 'Get a fast, free quote today',
     subtitle,
+    quoteHref = CTA.quoteHref,
 }: {
     heading?: string
     subtitle?: string
+    quoteHref?: string
 }) {
     return (
         <section className="grid-glow bg-navy-900 text-white">
@@ -21,9 +22,9 @@ export default function CtaBand({
                     <a href={SITE.phoneHref} className="btn-call text-lg">
                         {CTA.callLabel}
                     </a>
-                    <Link href={CTA.quoteHref} className="btn-ghost-light text-lg">
+                    <a href={quoteHref} className="btn-ghost-light text-lg">
                         {CTA.quoteLabel}
-                    </Link>
+                    </a>
                 </div>
             </div>
         </section>

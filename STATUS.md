@@ -123,6 +123,25 @@ templates in Wave 5.
 **Status: all 5 waves complete.** Remaining items are content/config (see go-live checklist),
 not build work.
 
+### CRO round — conversion optimisation ✅ (from a multi-agent audit)
+Ran a 6-dimension CRO audit (43 agents, each finding adversarially verified). Honest reality
+check: 50% enquiry rate isn't achievable on cold traffic — realistic is **8–15% overall**,
+**25–40% for emergency searchers**; the biggest lever is GBP + reviews (traffic quality) and
+answering the phone fast, not copy. Implemented the high-impact code fixes:
+- **Fixed silent lead loss** — the WhatsApp fallback no longer shows a false "sent!" when the
+  popup is blocked / WhatsApp absent (guards `window.open`); shows a "call us" error instead.
+- **Inline pre-filled quote form on every service & suburb page** (`QuoteBlock`) — the money
+  pages no longer force a click-through to /contact; service/suburb is pre-selected.
+- **Emergency page is now call-first** — big green "Call Arif now", 24/7 badge, form demoted.
+- **CTA hierarchy fixed** — call (green) is now the primary everywhere incl. the desktop header;
+  `btn-call` got a matching shadow; mobile bar shows the number + a "4.7★ · Licensed · Insured" line.
+- **More asks at peak intent** — CtaBand after Reviews on the home page; hero/quote CTAs smooth-scroll
+  to the on-page `#quote` form instead of navigating away.
+- **Form trust & friction** — in-form rating/licence row, benefit-led "Get My Free Quote" button,
+  autocomplete (name/tel), privacy line, honeypot, honest response promise.
+- **Photo-ready** — `Review.image` optional field + graceful fallback so real photos drop in later.
+- Hero circuit animation gated to desktop (cleaner/faster mobile hero).
+
 ### Enhancement — animated hero ✅
 - Subtle "electric current" animation in the hero (`components/HeroCircuits.tsx`): faint circuit
   traces with cyan pulses travelling along them. Pure SVG + CSS, zero JS, negligible weight,

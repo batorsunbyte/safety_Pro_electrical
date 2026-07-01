@@ -58,6 +58,9 @@ export const SITE = {
     hours: 'Mon–Sat, plus 24/7 emergency call-outs',
     emergency247: true,
 
+    // Honest response promise (biased to the reliable CALL path). Reused across CTAs.
+    responsePromise: 'We answer fast — most quotes within the hour',
+
     // ---- Deployment ----
     // TODO: confirm final domain before go-live.
     url: 'https://safetyproelectrical.com.au',

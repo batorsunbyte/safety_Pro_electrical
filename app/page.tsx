@@ -12,7 +12,8 @@ import WhyUs from '@/components/WhyUs'
 import Steps from '@/components/Steps'
 import Reviews from '@/components/Reviews'
 import Faq from '@/components/Faq'
-import QuoteForm from '@/components/QuoteForm'
+import QuoteBlock from '@/components/QuoteBlock'
+import CtaBand from '@/components/CtaBand'
 import JsonLd from '@/components/JsonLd'
 
 export default function HomePage() {
@@ -25,8 +26,9 @@ export default function HomePage() {
             <WhyUs />
             <Steps />
             <Reviews reviews={REVIEWS.slice(0, 6)} moreHref="/reviews/" />
+            <CtaBand heading="Ready to sort your electrical job?" quoteHref="#quote" />
             <AreasTeaser />
-            <QuoteSection />
+            <QuoteBlock />
             <Faq faqs={HOME_FAQS} />
         </>
     )
@@ -63,12 +65,16 @@ function Hero() {
                             <PhoneIcon className="h-5 w-5" />
                             {CTA.callLabel}
                         </a>
-                        <Link href={CTA.quoteHref} className="btn-primary text-lg">
+                        <a href="#quote" className="btn-primary text-lg">
                             {CTA.quoteLabel}
-                        </Link>
+                        </a>
                     </div>
 
-                    <ul className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
+                    <p className="mt-4 text-sm text-white/60">
+                        Upfront fixed-price quotes · Certificate of Electrical Safety on every job
+                    </p>
+
+                    <ul className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
                         <li className="flex items-center gap-2">
                             <Stars /> <span>{SITE.rating.value}★ · {SITE.rating.count} reviews</span>
                         </li>
@@ -221,48 +227,6 @@ function AreasTeaser() {
                 <p className="mt-6 text-sm text-navy-700/70">
                     Also servicing {ALSO_SERVICING.join(', ')} & surrounding suburbs.
                 </p>
-            </div>
-        </section>
-    )
-}
-
-/* ------------------------------------------------------------------ */
-
-function QuoteSection() {
-    return (
-        <section id="quote" className="section scroll-mt-24 bg-mist">
-            <div className="container-x grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
-                <div>
-                    <span className="eyebrow">Get in touch</span>
-                    <h2 className="mt-3 text-3xl sm:text-4xl">Request your free quote</h2>
-                    <p className="mt-4 text-lg text-navy-700/80">
-                        Fill in a few details and we&apos;ll get back to you fast with an honest,
-                        no-obligation quote. Prefer to talk? Call Arif directly — we answer the phone.
-                    </p>
-
-                    <ul className="mt-8 space-y-3">
-                        {['Free, no-obligation quotes', 'No call-out fee on quoted jobs', 'Fully licensed & insured', 'Fast, friendly local response'].map((t) => (
-                            <li key={t} className="flex items-center gap-3 text-navy-800">
-                                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-safety-green/15 text-safety-green">
-                                    <Tick />
-                                </span>
-                                {t}
-                            </li>
-                        ))}
-                    </ul>
-
-                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                        <a href={SITE.phoneHref} className="btn-call">
-                            <PhoneIcon className="h-5 w-5" />
-                            {CTA.callLabel}
-                        </a>
-                        <a href={SITE.whatsappHref} target="_blank" rel="noopener" className="btn-ghost">
-                            WhatsApp us
-                        </a>
-                    </div>
-                </div>
-
-                <QuoteForm />
             </div>
         </section>
     )

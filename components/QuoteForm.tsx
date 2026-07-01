@@ -9,15 +9,35 @@ type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 const SUBURB_OPTIONS = [...SUBURBS.map((s) => s.name), ...ALSO_SERVICING].sort()
 
-export default function QuoteForm() {
+export default function QuoteForm({
+    defaultService = '',
+    defaultSuburb = '',
+}: {
+    defaultService?: string
+    defaultSuburb?: string
+}) {
     const [status, setStatus] = useState<Status>('idle')
-    const [form, setForm] = useState({ name: '', phone: '', suburb: '', service: '', message: '' })
+    const [hp, setHp] = useState('') // honeypot
+    const [form, setForm] = useState({
+        name: '',
+        phone: '',
+        suburb: defaultSuburb,
+        service: defaultService,
+        message: '',
+    })
 
-    const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-        setForm((f) => ({ ...f, [k]: e.target.value }))
+    const update =
+        (k: keyof typeof form) =>
+        (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+            setForm((f) => ({ ...f, [k]: e.target.value }))
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
+        if (hp) {
+            // bot filled the hidden field — silently drop
+            setStatus('sent')
+            return
+        }
         setStatus('sending')
 
         const summary = [
@@ -29,7 +49,7 @@ export default function QuoteForm() {
             `Details: ${form.message || '—'}`,
         ].join('\n')
 
-        // Preferred path: Web3Forms → emails Arif directly (set access key in Welle 4)
+        // Preferred path: Web3Forms → emails Arif directly (set access key to enable)
         if (SITE.formAccessKey) {
             try {
                 const res = await fetch('https://api.web3forms.com/submit', {
@@ -37,26 +57,27 @@ export default function QuoteForm() {
                     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
                     body: JSON.stringify({
                         access_key: SITE.formAccessKey,
-                        subject: `Quote request from ${form.name} (${form.suburb})`,
+                        subject: `Quote request from ${form.name} (${form.suburb || 'SE Melbourne'})`,
                         from_name: SITE.name,
+                        botcheck: false,
                         ...form,
                     }),
                 })
-                if (res.ok) {
-                    setStatus('sent')
-                    return
-                }
-                setStatus('error')
-                return
+                setStatus(res.ok ? 'sent' : 'error')
             } catch {
                 setStatus('error')
-                return
             }
+            return
         }
 
-        // Fallback (no backend yet): open WhatsApp with the details pre-filled
-        window.open(`${SITE.whatsappHref}?text=${encodeURIComponent(summary)}`, '_blank', 'noopener')
-        setStatus('sent')
+        // Fallback (no key yet): open WhatsApp with details pre-filled.
+        // Guard: if the browser blocks the popup / WhatsApp isn't available, DON'T fake success.
+        const win = window.open(
+            `${SITE.whatsappHref}?text=${encodeURIComponent(summary)}`,
+            '_blank',
+            'noopener',
+        )
+        setStatus(win ? 'sent' : 'error')
     }
 
     if (status === 'sent') {
@@ -69,7 +90,7 @@ export default function QuoteForm() {
                 </div>
                 <h3 className="mt-5 text-2xl">Thanks — request sent!</h3>
                 <p className="mt-2 text-navy-700/75">
-                    We&apos;ll get back to you shortly. Need it sorted now? Give Arif a call.
+                    {SITE.responsePromise}. Need it sorted now? Give Arif a call.
                 </p>
                 <a href={SITE.phoneHref} className="btn-call mt-6">
                     Call {SITE.phoneDisplay}
@@ -80,11 +101,27 @@ export default function QuoteForm() {
 
     return (
         <form onSubmit={handleSubmit} className="card p-6 sm:p-8">
+            {/* Trust row — reassurance at the point of submission */}
+            <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-navy-700/10 pb-4 text-sm">
+                <span className="flex text-cyan-deep" aria-label={`${SITE.rating.value} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                        <svg key={i} className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                            <path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
+                        </svg>
+                    ))}
+                </span>
+                <span className="font-semibold text-navy-900">
+                    {SITE.rating.value}★ from {SITE.rating.count} reviews
+                </span>
+                <span className="text-navy-700/60">· Licensed A-Grade · Fully insured</span>
+            </div>
+
             <div className="grid gap-4">
                 <Field label="Your name" required>
                     <input
                         type="text"
                         required
+                        autoComplete="name"
                         value={form.name}
                         onChange={update('name')}
                         placeholder="e.g. Sarah"
@@ -96,11 +133,16 @@ export default function QuoteForm() {
                     <input
                         type="tel"
                         required
+                        autoComplete="tel"
+                        inputMode="tel"
                         value={form.phone}
                         onChange={update('phone')}
                         placeholder="04XX XXX XXX"
                         className="input"
                     />
+                    <span className="mt-1.5 block text-xs text-navy-700/60">
+                        We&apos;ll only use this to quote your job — no spam.
+                    </span>
                 </Field>
 
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -139,17 +181,33 @@ export default function QuoteForm() {
                     />
                 </Field>
 
+                {/* Honeypot — hidden from humans, catches bots */}
+                <input
+                    type="text"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={hp}
+                    onChange={(e) => setHp(e.target.value)}
+                    className="hidden"
+                    aria-hidden="true"
+                />
+
                 <button type="submit" disabled={status === 'sending'} className="btn-primary w-full text-lg disabled:opacity-60">
-                    {status === 'sending' ? 'Sending…' : SITE.formAccessKey ? 'Send my request' : 'Send via WhatsApp'}
+                    {status === 'sending' ? 'Sending…' : 'Get My Free Quote'}
                 </button>
 
                 {status === 'error' && (
-                    <p className="text-center text-sm text-red-600">
-                        Something went wrong — please call us on {SITE.phoneDisplay}.
+                    <p className="text-center text-sm font-medium text-red-600">
+                        Sorry — that didn&apos;t go through. Please call us on{' '}
+                        <a href={SITE.phoneHref} className="underline">
+                            {SITE.phoneDisplay}
+                        </a>
+                        .
                     </p>
                 )}
-                <p className="text-center text-xs text-navy-700/60">
-                    Free quote · No obligation · We reply fast
+                <p className="text-center text-sm text-navy-700/70">
+                    Free quote · No obligation · {SITE.responsePromise}
                 </p>
             </div>
         </form>
