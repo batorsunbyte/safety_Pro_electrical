@@ -2,6 +2,7 @@
  * The core services. Each becomes its own SEO page in Welle 2
  * (/services/<slug>) and feeds the homepage services grid + nav + schema.
  */
+import type { Faq } from './faqs'
 
 export type Service = {
     slug: string
@@ -12,11 +13,15 @@ export type Service = {
     intro: string
     // Bullet list of what's included / common jobs
     highlights: string[]
+    // Short reassurance paragraph (why choose us for THIS service)
+    reassurance: string
     // Simple inline-SVG icon key (rendered by <ServiceIcon>)
     icon: 'bolt' | 'switchboard' | 'shield' | 'ev' | 'light' | 'rewire'
     // Emergency / featured flags for UI emphasis
     featured?: boolean
     emergency?: boolean
+    // Per-service FAQs (rendered + emitted as FAQPage schema)
+    faqs: Faq[]
 }
 
 export const SERVICES: Service[] = [
@@ -29,12 +34,28 @@ export const SERVICES: Service[] = [
         highlights: [
             'Power outages & tripping switchboards',
             'Burning smells, sparking or hot power points',
-            'Storm & fault damage',
+            'Storm & fault damage repairs',
             'Fast same-day and after-hours call-outs',
         ],
+        reassurance:
+            'Electrical faults can be dangerous — don’t wait. We’ll make it safe first, explain what’s going on in plain English, and give you an upfront price before any repair.',
         icon: 'bolt',
         featured: true,
         emergency: true,
+        faqs: [
+            {
+                q: 'Do you really answer 24/7?',
+                a: 'Yes. For genuine electrical emergencies we take calls day and night, including weekends and public holidays. Call 0490 101 365 and we’ll prioritise getting to you.',
+            },
+            {
+                q: 'What counts as an electrical emergency?',
+                a: 'A burning smell, sparks, smoke, hot or discoloured power points, exposed wiring, or a complete loss of power — especially if it won’t reset. If in doubt, switch off at the main and call us.',
+            },
+            {
+                q: 'Should I try to fix it myself first?',
+                a: 'No. In Victoria, electrical work must be done by a licensed electrician. Turn off power at the switchboard if it’s safe to do so, keep clear, and let us handle it safely.',
+            },
+        ],
     },
     {
         slug: 'switchboard-upgrades',
@@ -48,8 +69,24 @@ export const SERVICES: Service[] = [
             'Boards that trip or overload',
             'Certificate of Electrical Safety on completion',
         ],
+        reassurance:
+            'A modern switchboard is the heart of a safe home. We size it correctly for your needs today and leave room for what’s next — solar, air-con or an EV charger down the track.',
         icon: 'switchboard',
         featured: true,
+        faqs: [
+            {
+                q: 'How do I know if my switchboard needs upgrading?',
+                a: 'Common signs are ceramic fuses, no safety switches (RCDs), frequent tripping, flickering lights, or a board that’s full with no room for new circuits. We’ll inspect it and give you honest advice.',
+            },
+            {
+                q: 'How long does a switchboard upgrade take?',
+                a: 'Most residential upgrades are completed within a day. We’ll confirm timing and cost upfront, and you’ll receive a Certificate of Electrical Safety when it’s done.',
+            },
+            {
+                q: 'Will my power be off during the upgrade?',
+                a: 'Power is off for part of the job while we work safely on the board. We plan it to keep disruption to a minimum and let you know what to expect beforehand.',
+            },
+        ],
     },
     {
         slug: 'safety-switches-smoke-alarms',
@@ -63,7 +100,23 @@ export const SERVICES: Service[] = [
             'Landlord / rental compliance certificates',
             'Switchboard safety inspections',
         ],
+        reassurance:
+            'A safety switch cuts power in milliseconds to prevent electric shock, and working smoke alarms give your family time to get out. We make sure both are installed and working correctly.',
         icon: 'shield',
+        faqs: [
+            {
+                q: 'How often should safety switches be tested?',
+                a: 'We recommend testing safety switches every three months using the test button, and having them professionally checked periodically. We can test and certify yours during any visit.',
+            },
+            {
+                q: 'What are the smoke alarm rules for Victorian rentals?',
+                a: 'Rental properties must have working smoke alarms installed and tested according to Victorian regulations. We install compliant hard-wired alarms and provide the certificates landlords need.',
+            },
+            {
+                q: 'Do you provide compliance certificates?',
+                a: 'Yes. We provide a Certificate of Electrical Safety for the work we do, plus safety-switch and smoke-alarm compliance documentation for landlords and property managers.',
+            },
+        ],
     },
     {
         slug: 'ev-charger-installation',
@@ -77,8 +130,24 @@ export const SERVICES: Service[] = [
             'Dedicated circuit + safety switch protection',
             'Tidy, code-compliant cable runs',
         ],
+        reassurance:
+            'An EV charger draws serious current, so it needs its own protected circuit — not a shared power point. We do it properly so your car charges safely, quickly and reliably.',
         icon: 'ev',
         featured: true,
+        faqs: [
+            {
+                q: 'Can you install a Tesla Wall Connector?',
+                a: 'Yes. We install Tesla Wall Connectors and all major EV charger brands, including checking your switchboard has capacity and running a dedicated, protected circuit.',
+            },
+            {
+                q: 'Do I need to upgrade my switchboard for an EV charger?',
+                a: 'Sometimes. If your switchboard is older or already near capacity, an upgrade may be needed to add a dedicated circuit safely. We’ll check and let you know before we start.',
+            },
+            {
+                q: 'How long does an EV charger install take?',
+                a: 'A straightforward home install is usually done in a few hours. If a switchboard upgrade or a longer cable run is involved, we’ll factor that into your upfront quote.',
+            },
+        ],
     },
     {
         slug: 'lighting-power-points',
@@ -92,7 +161,23 @@ export const SERVICES: Service[] = [
             'Exhaust fans & 4-in-1 bathroom heaters',
             'Outdoor & security sensor lights',
         ],
+        reassurance:
+            'The little jobs matter too. We take the same care with a single power point as we do a full rewire — neat placement, tidy finish and no mess left behind.',
         icon: 'light',
+        faqs: [
+            {
+                q: 'Can you swap my old halogen downlights to LED?',
+                a: 'Absolutely. Switching to LED downlights cuts your power bill, runs cooler and lasts far longer. We can replace fittings and recommend the right colour temperature for each room.',
+            },
+            {
+                q: 'Can you add power points where I need them?',
+                a: 'Yes — kitchens, home offices, outdoor areas, garages and more. We’ll place them neatly and make sure the circuit can handle the extra load.',
+            },
+            {
+                q: 'Do you install bathroom exhaust fans and heaters?',
+                a: 'We do — including 4-in-1 units with light, heat, fan and exhaust. Proper ventilation protects your bathroom from mould and damp.',
+            },
+        ],
     },
     {
         slug: 'rewiring-renovations',
@@ -106,7 +191,23 @@ export const SERVICES: Service[] = [
             'Renovation & extension electrical fit-outs',
             'New electrical installations',
         ],
+        reassurance:
+            'Old wiring is one of the most common causes of house fires. We plan rewires carefully around your renovation so it’s safe, future-proof and finished to a high standard.',
         icon: 'rewire',
+        faqs: [
+            {
+                q: 'How do I know if my house needs rewiring?',
+                a: 'Warning signs include cloth or rubber-insulated wiring, frequent blown fuses, flickering lights, discoloured outlets, or a home over 30–40 years old that’s never been updated. We can assess and advise.',
+            },
+            {
+                q: 'Can you work alongside my builder or renovation?',
+                a: 'Yes. We regularly coordinate with builders and homeowners on renovations and extensions, planning circuits, lighting and power around your layout and timeline.',
+            },
+            {
+                q: 'Is a full rewire disruptive?',
+                a: 'There’s some disruption, but we plan the work in stages to minimise it and keep essential power on where possible. We’ll walk you through the plan and give a clear timeline.',
+            },
+        ],
     },
 ]
 

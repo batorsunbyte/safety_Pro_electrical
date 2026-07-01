@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { SITE, CTA } from '@/lib/site'
 import { SERVICES } from '@/data/services'
 import { PRIORITY_SUBURBS, ALSO_SERVICING } from '@/data/suburbs'
+import { REVIEWS } from '@/data/reviews'
 import { HOME_FAQS } from '@/data/faqs'
 import { faqSchema } from '@/lib/schema'
 import { LogoMark } from '@/components/Logo'
@@ -22,7 +23,7 @@ export default function HomePage() {
             <ServicesPreview />
             <WhyUs />
             <Steps />
-            <Reviews />
+            <Reviews reviews={REVIEWS.slice(0, 6)} moreHref="/reviews/" />
             <AreasTeaser />
             <QuoteSection />
             <Faq faqs={HOME_FAQS} />

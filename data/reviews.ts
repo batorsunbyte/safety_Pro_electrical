@@ -77,4 +77,51 @@ export const REVIEWS: Review[] = [
         service: 'Smoke Alarms & Sensor Lights',
         text: 'So happy I found Arif Daryabi from Safety Pro Electrical. He checked and tested the smoke detector and porch sensor light with great workmanship. I’ll definitely call him for future electrical jobs.',
     },
+    {
+        name: 'Sean I',
+        suburb: 'Cranbourne East',
+        date: 'Oct 2022',
+        service: 'Power Points',
+        text: 'Thorough and knew exactly what he was doing. Got the job done and fixed quickly. Very happy with the result.',
+    },
+    {
+        name: 'Andrew R',
+        suburb: 'Narre Warren North',
+        date: 'Oct 2022',
+        service: 'New Installations',
+        text: 'Arif was extremely professional and quick to complete my job. He explained what he needed to do and recommended the correct solution.',
+    },
+    {
+        name: 'Jamie',
+        suburb: 'Narre Warren South',
+        date: 'Jan 2024',
+        service: 'Electrical Repairs',
+        text: 'Great worker — trustworthy and honest. Will use again.',
+    },
+    {
+        name: 'Rinkesh',
+        suburb: 'Officer',
+        date: 'Oct 2023',
+        service: 'Electrical Service',
+        text: 'Very good quote and nice, professional service provider. Looking forward to using them again in the future.',
+    },
+    {
+        name: 'Cherish H',
+        suburb: 'Wantirna South',
+        date: 'Mar 2024',
+        service: 'Electrical Lighting',
+        text: 'Very professional, great attention to detail, good price with good service all round.',
+    },
 ]
+
+/**
+ * Reviews from (or near) a given suburb, for suburb landing pages.
+ * Matches loosely so "Narre Warren" also surfaces "Narre Warren South/North".
+ */
+export function reviewsForSuburb(suburbName: string): Review[] {
+    const n = suburbName.toLowerCase()
+    return REVIEWS.filter((r) => {
+        const s = r.suburb.toLowerCase()
+        return s.includes(n) || n.includes(s)
+    })
+}
