@@ -122,3 +122,11 @@ templates in Wave 5.
 
 **Status: all 5 waves complete.** Remaining items are content/config (see go-live checklist),
 not build work.
+
+### Enhancement — animated hero ✅
+- Subtle "electric current" animation in the hero (`components/HeroCircuits.tsx`): faint circuit
+  traces with cyan pulses travelling along them. Pure SVG + CSS, zero JS, negligible weight,
+  freezes under `prefers-reduced-motion`. Text stays fully readable.
+- Decision: background **music was rejected** — browsers block autoplay-with-sound and it spikes
+  bounce/hurts trust. A real hero **video** can be added later, but only with genuine footage of
+  Arif's work (muted, poster, mobile fallback, <2–3 MB) so it doesn't wreck LCP.

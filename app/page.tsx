@@ -7,6 +7,7 @@ import { HOME_FAQS } from '@/data/faqs'
 import { faqSchema } from '@/lib/schema'
 import { LogoMark } from '@/components/Logo'
 import ServiceIcon from '@/components/ServiceIcon'
+import HeroCircuits from '@/components/HeroCircuits'
 import WhyUs from '@/components/WhyUs'
 import Steps from '@/components/Steps'
 import Reviews from '@/components/Reviews'
@@ -40,7 +41,8 @@ function Hero() {
                 className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full opacity-30 blur-3xl"
                 style={{ background: 'radial-gradient(circle, #16a6e6 0%, transparent 65%)' }}
             />
-            <div className="container-x relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:py-28">
+            <HeroCircuits />
+            <div className="container-x relative z-10 grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:py-28">
                 <div className="animate-fade-up">
                     <span className="eyebrow !text-cyan-bright">
                         <BoltDot /> Licensed A-Grade Electricians · {SITE.baseSuburb}

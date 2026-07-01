@@ -100,3 +100,21 @@
         background-size: 46px 46px;
     }
 }
+
+/* Hero "electric current" pulse travelling along circuit traces.
+   dash(10) + gap(258) = 268; offset -1072 = 4×268 → seamless loop.
+   Freezes automatically under the global prefers-reduced-motion rule. */
+@keyframes spe-current {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: -1072;
+    }
+}
+
+.spe-pulse {
+    stroke-dasharray: 10 258;
+    animation: spe-current 6s linear infinite;
+    will-change: stroke-dashoffset;
+}
