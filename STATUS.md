@@ -31,8 +31,8 @@ electrician based in Cranbourne East, servicing South-East Melbourne.
 | **1 – Home** | Full home sections: services grid, why-us, real reviews, 4-field quote form, FAQ, trust block, CTA | ✅ Done |
 | **2 – Services** | 6 individual service pages with copy + schema + FAQ | ✅ Done |
 | **3 – Service Areas** | 8 priority suburb pages with unique local copy | ✅ Done |
-| **4 – About / Reviews / Contact** | Story, trust, contact page + form delivery (email/SMS) | ⏳ Next |
-| **5 – Polish** | Perf, WebP, a11y, OG/favicon assets, sitemap.xml/robots.txt, GBP guide | ⬜ |
+| **4 – About / Reviews / Contact** | Story, trust, contact page + form delivery (email/SMS) | ✅ Done |
+| **5 – Polish** | Perf, WebP, a11y, OG/favicon assets, sitemap.xml/robots.txt, GBP guide | ✅ Done |
 
 ---
 
@@ -44,13 +44,16 @@ electrician based in Cranbourne East, servicing South-East Melbourne.
 - **Brand:** dark navy + electric cyan, shield/bulb/bolt logo (rebuilt as SVG)
 - **Services & service area:** derived from real jobs (see `data/services.ts`, `data/suburbs.ts`)
 
-## Still needed from Arif (does NOT block the build)
+## Go-live checklist (before pointing a domain at it)
 
-- [ ] Real job photos (10–15) for gallery + hero — via WhatsApp
-- [ ] Exact opening hours (emergency line is 24/7)
-- [ ] Confirm final domain
-- [ ] Create Google Business Profile (Welle 5 provides the guide)
-- [ ] Provide transparent-background logo PNG (optional — SVG mark is in place)
+- [ ] **Web3Forms key** — create a free key at web3forms.com with Arif's email, paste into
+      `lib/site.ts` → `formAccessKey`. Until then the quote form delivers via WhatsApp (works now).
+- [ ] **Confirm final domain**, then set it in `lib/site.ts` → `url` (drives schema, OG, sitemap).
+- [ ] **Google Business Profile** — Arif to create it + gather reviews. Guide + WhatsApp
+      templates ready: `docs/google-business-profile-guide.md`. (Biggest organic lever — "Gleis B".)
+- [ ] Real job photos (10–15) — via WhatsApp; will add a gallery + swap hero placeholder.
+- [ ] Exact opening hours (emergency line is 24/7).
+- [ ] Deploy (GitHub Pages / Vercel / Netlify — static `out/` folder).
 
 ---
 
@@ -107,4 +110,15 @@ templates in Wave 5.
 - Reusable `Breadcrumbs` + `CtaBand`; `Reviews` now parametrised (subset/heading/filter).
 - 20 static pages total, build clean.
 
-**Next:** Wave 4 — About, Reviews and Contact pages + form email delivery.
+### Waves 4 & 5 — Pages + Polish ✅
+- **About** (story, licences, values via WhyUs, reviews), **Reviews** (all reviews + rating hero),
+  **Contact** (call/WhatsApp/email cards, service-area Google map embed, quote form).
+- Nav switched from home anchors to real pages; quote CTA → `/contact/#quote`.
+- **SEO/polish:** `sitemap.xml` + `robots.txt` (generated), branded **OG image** + apple-icon +
+  SVG favicon (static PNGs via `scripts/gen-images.mjs` — dodges the `next/og` static-export bug),
+  skip-to-content link, reduced-motion support, canonical URLs per page.
+- **21 pages** total, build clean, first-load JS ~96–103 kB.
+- **Gleis B guide delivered:** `docs/google-business-profile-guide.md`.
+
+**Status: all 5 waves complete.** Remaining items are content/config (see go-live checklist),
+not build work.

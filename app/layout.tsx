@@ -38,13 +38,6 @@ export const metadata: Metadata = {
     publisher: SITE.name,
     formatDetection: { telephone: true, email: true, address: true },
     alternates: { canonical: '/' },
-    icons: {
-        icon: [
-            { url: '/favicon.svg', type: 'image/svg+xml' },
-            { url: '/favicon.ico', sizes: '32x32' },
-        ],
-        apple: [{ url: '/apple-icon.png', sizes: '180x180' }],
-    },
     openGraph: {
         type: 'website',
         locale: SITE.locale,
@@ -53,13 +46,11 @@ export const metadata: Metadata = {
         description:
             'Fast, honest, fully licensed electrical work across South-East Melbourne. Emergency, switchboards, EV chargers, safety switches, lighting & rewiring.',
         url: SITE.url,
-        images: [{ url: '/og-image.png', width: 1200, height: 630, alt: SITE.name }],
     },
     twitter: {
         card: 'summary_large_image',
         title: `${SITE.name} | Licensed Electrician ${SITE.region}`,
         description: 'Licensed A-Grade electricians serving South-East Melbourne. 4.7★ rated.',
-        images: ['/og-image.png'],
     },
     robots: {
         index: true,
@@ -74,8 +65,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <JsonLd data={localBusinessSchema()} />
                 <JsonLd data={websiteSchema()} />
+                <a
+                    href="#main"
+                    className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-navy-900 focus:px-4 focus:py-2 focus:text-white"
+                >
+                    Skip to content
+                </a>
                 <Header />
-                <main className="pb-20 lg:pb-0">{children}</main>
+                <main id="main" className="pb-20 lg:pb-0">
+                    {children}
+                </main>
                 <Footer />
                 <MobileCallBar />
             </body>
