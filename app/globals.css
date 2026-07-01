@@ -1,0 +1,95 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --navy-900: #0a1220;
+    --cyan: #16a6e6;
+    --cyan-bright: #35c0f5;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        @apply bg-mist text-ink font-sans antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply font-display font-bold tracking-tight text-navy-900;
+        text-wrap: balance;
+    }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.001ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.001ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}
+
+@layer components {
+    .container-x {
+        @apply mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8;
+    }
+
+    /* ---- Buttons ---- */
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+               text-base font-semibold transition-all duration-200
+               focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan/40;
+    }
+
+    .btn-primary {
+        @apply btn bg-cyan text-white shadow-cta hover:bg-cyan-deep hover:-translate-y-0.5;
+    }
+
+    .btn-call {
+        @apply btn bg-safety-green text-white hover:brightness-110 hover:-translate-y-0.5;
+    }
+
+    .btn-ghost {
+        @apply btn border-2 border-navy-700/20 bg-white text-navy-900 hover:border-cyan hover:text-cyan-deep;
+    }
+
+    .btn-ghost-light {
+        @apply btn border-2 border-white/30 bg-white/5 text-white backdrop-blur hover:border-white hover:bg-white/10;
+    }
+
+    /* ---- Section rhythm ---- */
+    .section {
+        @apply py-16 sm:py-20 lg:py-28;
+    }
+
+    .eyebrow {
+        @apply inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-cyan-deep;
+    }
+
+    /* Subtle card */
+    .card {
+        @apply rounded-xl2 border border-navy-700/10 bg-white shadow-card;
+    }
+
+    /* Faint electric grid used on dark sections */
+    .grid-glow {
+        background-image:
+            linear-gradient(rgba(53, 192, 245, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(53, 192, 245, 0.06) 1px, transparent 1px);
+        background-size: 46px 46px;
+    }
+}
