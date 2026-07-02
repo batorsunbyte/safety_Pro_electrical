@@ -9,6 +9,7 @@ import type { Faq } from '@/data/faqs'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
 import ServiceIcon from '@/components/ServiceIcon'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import HeroCircuits from '@/components/HeroCircuits'
 import Reviews from '@/components/Reviews'
 import FaqSection from '@/components/Faq'
 import CtaBand from '@/components/CtaBand'
@@ -71,7 +72,8 @@ export default function SuburbPage({ params }: { params: { slug: string } }) {
             <JsonLd data={breadcrumbSchema(crumbs)} />
 
             {/* Hero */}
-            <section className="grid-glow bg-navy-900 text-white">
+            <section className="grid-glow relative isolate overflow-hidden bg-navy-900 text-white">
+                <HeroCircuits />
                 <div className="container-x py-6">
                     <Breadcrumbs items={crumbs} />
                 </div>

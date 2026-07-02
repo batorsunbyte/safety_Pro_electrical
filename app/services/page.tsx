@@ -5,6 +5,7 @@ import { SERVICES } from '@/data/services'
 import { breadcrumbSchema } from '@/lib/schema'
 import ServiceIcon from '@/components/ServiceIcon'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import HeroCircuits from '@/components/HeroCircuits'
 import CtaBand from '@/components/CtaBand'
 import JsonLd from '@/components/JsonLd'
 
@@ -25,7 +26,8 @@ export default function ServicesIndex() {
         <>
             <JsonLd data={breadcrumbSchema(crumbs)} />
 
-            <section className="grid-glow bg-navy-900 text-white">
+            <section className="grid-glow relative isolate overflow-hidden bg-navy-900 text-white">
+                <HeroCircuits />
                 <div className="container-x py-6">
                     <Breadcrumbs items={crumbs} />
                 </div>

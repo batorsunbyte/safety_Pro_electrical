@@ -38,7 +38,7 @@ export default function HomePage() {
 
 function Hero() {
     return (
-        <section className="grid-glow relative overflow-hidden bg-navy-900 text-white">
+        <section className="grid-glow relative isolate overflow-hidden bg-navy-900 text-white">
             <div
                 className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full opacity-30 blur-3xl"
                 style={{ background: 'radial-gradient(circle, #16a6e6 0%, transparent 65%)' }}

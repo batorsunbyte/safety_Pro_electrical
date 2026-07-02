@@ -3,6 +3,7 @@ import { SITE } from '@/lib/site'
 import { REVIEWS } from '@/data/reviews'
 import { breadcrumbSchema } from '@/lib/schema'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import HeroCircuits from '@/components/HeroCircuits'
 import Reviews from '@/components/Reviews'
 import CtaBand from '@/components/CtaBand'
 import JsonLd from '@/components/JsonLd'
@@ -25,7 +26,8 @@ export default function ReviewsPage() {
         <>
             <JsonLd data={breadcrumbSchema(crumbs)} />
 
-            <section className="grid-glow bg-navy-900 text-white">
+            <section className="grid-glow relative isolate overflow-hidden bg-navy-900 text-white">
+                <HeroCircuits />
                 <div className="container-x py-6">
                     <Breadcrumbs items={crumbs} />
                 </div>
