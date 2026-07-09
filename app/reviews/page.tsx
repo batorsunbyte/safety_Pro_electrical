@@ -38,8 +38,8 @@ export default function ReviewsPage() {
                             Rated {r.value}★ by South-East Melbourne homeowners
                         </h1>
                         <p className="mt-5 text-lg text-white/75">
-                            Honest feedback from real customers — {r.recommendations} positive recommendations
-                            and {r.hires} completed jobs. Verified via {r.source}.
+                            Real feedback — {r.recommendations} recommendations and {r.hires} completed
+                            jobs, verified via {r.source}.
                         </p>
                     </div>
                     <div className="flex items-center gap-4 rounded-xl2 border border-white/10 bg-white/[0.04] px-6 py-5">

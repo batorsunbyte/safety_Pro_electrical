@@ -39,15 +39,15 @@ function suburbFaqs(name: string, council: string): Faq[] {
     return [
         {
             q: `Do you service ${name}?`,
-            a: `Yes — ${name} (${council}) is part of our regular service area. We're based nearby in ${SITE.baseSuburb} and work throughout the area every week, so we know it well.`,
+            a: `Yes — ${name} (${council}) is part of our regular service area. We're based nearby in ${SITE.baseSuburb} and work in the area every week.`,
         },
         {
             q: `How quickly can you get to ${name}?`,
-            a: `Being local, we can often offer same-day service in ${name}. For genuine electrical emergencies we answer the phone 24/7 and prioritise getting to you fast.`,
+            a: `We're local, so same-day service in ${name} is often possible. For electrical emergencies we answer the phone 24/7.`,
         },
         {
             q: `Are you licensed and insured to work in ${name}?`,
-            a: `Absolutely. We hold an A-Grade Electrical Licence (A68377) and are a Registered Electrical Contractor (REC-33712) with Energy Safe Victoria, fully insured, with every job backed by a Certificate of Electrical Safety.`,
+            a: `Yes. We hold an A-Grade Electrical Licence (A68377) and are a Registered Electrical Contractor (REC-33712) with Energy Safe Victoria. Fully insured, and every job comes with a Certificate of Electrical Safety.`,
         },
     ]
 }
@@ -116,7 +116,7 @@ export default function SuburbPage({ params }: { params: { slug: string } }) {
                     <span className="eyebrow">What we do in {suburb.name}</span>
                     <h2 className="mt-3 text-3xl sm:text-4xl">Electrical services in {suburb.name}</h2>
                     <p className="mt-4 max-w-2xl text-lg text-navy-700/80">
-                        Whatever your home in {suburb.name} needs, we cover it — safely, tidily and to
+                        Whatever your home in {suburb.name} needs, we cover it — safely and to
                         Australian standards.
                     </p>
                     <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -145,7 +145,7 @@ export default function SuburbPage({ params }: { params: { slug: string } }) {
 
             <QuoteBlock
                 heading={`Get a quote in ${suburb.name}`}
-                subtitle={`Tell us what you need in ${suburb.name} and we'll get back to you fast with an honest, no-obligation quote.`}
+                subtitle={`Tell us what you need in ${suburb.name} — we'll get back to you fast with a no-obligation quote.`}
                 defaultSuburb={suburb.name}
                 excludeNames={reviews.map((r) => r.name)}
             />

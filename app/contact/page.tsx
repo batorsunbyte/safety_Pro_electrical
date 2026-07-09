@@ -34,8 +34,8 @@ export default function ContactPage() {
                         Contact us for a fast, free quote
                     </h1>
                     <p className="mt-5 max-w-2xl text-lg text-white/75">
-                        Call or message and you&apos;ll speak directly with a licensed electrician. For
-                        emergencies, we&apos;re available 24/7.
+                        Call or message and you&apos;ll speak to a licensed electrician. Emergencies
+                        answered 24/7.
                     </p>
                 </div>
             </section>
@@ -57,7 +57,7 @@ export default function ContactPage() {
                                 href={SITE.whatsappHref}
                                 label="WhatsApp"
                                 value={SITE.phoneDisplay}
-                                hint="Send photos of the job for a quick quote"
+                                hint="Send photos for a quick quote"
                                 icon="chat"
                                 external
                             />

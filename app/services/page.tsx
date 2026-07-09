@@ -37,8 +37,8 @@ export default function ServicesIndex() {
                         Electrical services for homes across South-East Melbourne
                     </h1>
                     <p className="mt-5 max-w-2xl text-lg text-white/75">
-                        Licensed, insured and rated 4.7★. From a single power point to a full rewire —
-                        every job is done to Australian standards with a Certificate of Electrical Safety.
+                        Licensed, insured and rated 4.7★. Every job meets Australian standards and
+                        comes with a Certificate of Electrical Safety.
                     </p>
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                         <a href={SITE.phoneHref} className="btn-call text-lg">

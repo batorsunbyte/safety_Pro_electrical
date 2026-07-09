@@ -160,6 +160,23 @@ answering the phone fast, not copy. Implemented the high-impact code fixes:
 - **Photo-ready** — `Review.image` optional field + graceful fallback so real photos drop in later.
 - Hero circuit animation gated to desktop (cleaner/faster mobile hero).
 
+### Round — "less text, simpler" + photos + completeness ✅ (2026-07-09)
+Owner direction: less text, simpler language = more trust. Implemented:
+- **Copy simplification across the whole site** (3-agent workflow): visible marketing copy cut
+  ~30–40%, short sentences, plain en-AU. All trust facts (A68377, REC-33712, ABN, 4.7★, phone)
+  and SEO keywords kept; jargon explained ("safety switch (RCD)"); over-claims removed
+  ("hundreds of homeowners"). FAQ substance kept (SEO, collapsed by default).
+- **Licensed stock photos (Pexels, commercial-use)** as placeholders — swap for Arif's real
+  job photos later by replacing files in `public/images/` (same names): multimeter-test,
+  switchboard-work, safety-board, ev-tesla, downlights, home-cabling, clipsal-breakers.
+  Wired into: home WorkStrip (3 photo tiles under trust bar), each service page body,
+  About page. Honest framing: illustrative/navigational, NOT claimed as "our jobs".
+- **Branded 404 page** (`app/not-found.tsx`, "Looks like a blown fuse." + call CTA).
+- **Grammar fix**: service CtaBand heading "Need a switchboard upgrades?" → "Need help with
+  switchboard upgrades?" (emergency: "Need an electrician right now?"); removed dead helper.
+- Note: `home-cabling.webp` (138 KB) + `multimeter-test.webp` (216 KB) resisted recompression
+  (Windows file lock) — acceptable (lazy-loaded, below the fold); can re-optimize later.
+
 ### Enhancement — animated hero ✅
 - Subtle "electric current" animation in the hero (`components/HeroCircuits.tsx`): faint circuit
   traces with cyan pulses travelling along them. Pure SVG + CSS, zero JS, negligible weight,

@@ -79,8 +79,8 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                                     Call Arif now — {SITE.phoneDisplay}
                                 </a>
                                 <p className="mt-3 text-sm text-white/70">
-                                    Day, night, weekends &amp; public holidays. Sparking, a burning smell or no
-                                    power? Don&apos;t wait — call straight away.
+                                    Sparking, a burning smell or no power? Call now — day, night, weekends
+                                    and public holidays.
                                 </p>
                                 <a href="#quote" className="mt-2 inline-block text-sm font-semibold text-cyan-bright hover:underline">
                                     Not urgent? Request a quote instead →
@@ -122,20 +122,29 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                         <h2 className="mt-3 text-3xl">Done properly, the first time</h2>
                         <p className="mt-4 text-lg leading-relaxed text-navy-700/80">{service.reassurance}</p>
                         <p className="mt-4 text-lg leading-relaxed text-navy-700/80">
-                            Every job is carried out by a licensed A-Grade electrician (A68377, REC-33712),
-                            completed to AS/NZS 3000 standards and finished with a Certificate of Electrical
-                            Safety. Fully insured, upfront pricing, no mess left behind.
+                            Every job is done by a licensed A-Grade electrician (A68377, REC-33712), compliant
+                            with Australian standards, with a Certificate of Electrical Safety to prove it.
+                            Fully insured. Upfront pricing. No mess left behind.
                         </p>
                     </div>
-                    <div className="card h-fit p-6">
-                        <p className="text-sm font-semibold uppercase tracking-wide text-cyan-deep">Fast & local</p>
-                        <p className="mt-2 text-navy-700/80">
-                            Based in {SITE.baseSuburb}, servicing all of {SITE.region}. Same-day service is
-                            often available, and we answer the phone 24/7 for emergencies.
-                        </p>
-                        <a href={SITE.phoneHref} className="btn-call mt-5 w-full">
-                            Call {SITE.phoneDisplay}
-                        </a>
+                    <div className="space-y-6">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={service.image}
+                            alt={service.imageAlt}
+                            loading="lazy"
+                            className="aspect-[4/3] w-full rounded-xl2 border border-navy-700/10 object-cover shadow-card"
+                        />
+                        <div className="card h-fit p-6">
+                            <p className="text-sm font-semibold uppercase tracking-wide text-cyan-deep">Fast & local</p>
+                            <p className="mt-2 text-navy-700/80">
+                                Based in {SITE.baseSuburb}, servicing all of {SITE.region}. Same-day service
+                                often available. Emergencies answered 24/7.
+                            </p>
+                            <a href={SITE.phoneHref} className="btn-call mt-5 w-full">
+                                Call {SITE.phoneDisplay}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -152,7 +161,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
 
             <QuoteBlock
                 heading={`Get a quote for ${service.title}`}
-                subtitle={`Tell us about your ${service.title.toLowerCase()} job and we'll get back to you fast with an honest, no-obligation quote.`}
+                subtitle={`Tell us about your ${service.title.toLowerCase()} job — we'll get back to you fast with a no-obligation quote.`}
                 defaultService={service.title}
                 excludeNames={serviceReviews.reviews.map((r) => r.name)}
             />
@@ -201,13 +210,16 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 </div>
             </section>
 
-            <CtaBand heading={`Need ${indefinite(service.title)}?`} quoteHref="#quote" />
+            <CtaBand
+                heading={
+                    service.emergency
+                        ? 'Need an electrician right now?'
+                        : `Need help with ${service.title.toLowerCase()}?`
+                }
+                quoteHref="#quote"
+            />
         </>
     )
-}
-
-function indefinite(title: string) {
-    return /^[aeiou]/i.test(title) ? `an ${title.toLowerCase()}` : `a ${title.toLowerCase()}`
 }
 
 function Tick({ className = '' }: { className?: string }) {

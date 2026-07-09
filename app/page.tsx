@@ -8,6 +8,7 @@ import { faqSchema } from '@/lib/schema'
 import { LogoMark } from '@/components/Logo'
 import ServiceIcon from '@/components/ServiceIcon'
 import HeroCircuits from '@/components/HeroCircuits'
+import WorkStrip from '@/components/WorkStrip'
 import WhyUs from '@/components/WhyUs'
 import Steps from '@/components/Steps'
 import Reviews from '@/components/Reviews'
@@ -22,6 +23,7 @@ export default function HomePage() {
             <JsonLd data={faqSchema(HOME_FAQS)} />
             <Hero />
             <TrustBar />
+            <WorkStrip />
             <ServicesPreview />
             <WhyUs />
             <Steps />
@@ -55,8 +57,8 @@ function Hero() {
                         <span className="text-cyan-bright">South-East Melbourne</span>.
                     </h1>
                     <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
-                        From 24/7 emergency call-outs to switchboard upgrades, EV chargers and full
-                        rewires — Arif is the electrician your neighbours keep recommending.
+                        Emergencies, switchboard upgrades, EV chargers, rewires. Arif is the
+                        electrician your neighbours recommend.
                     </p>
 
                     <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -160,8 +162,8 @@ function ServicesPreview() {
                     <span className="eyebrow">What we do</span>
                     <h2 className="mt-3 text-3xl sm:text-4xl">Electrical services, done properly</h2>
                     <p className="mt-4 text-lg text-navy-700/80">
-                        Every job is completed to Australian standards and backed by a Certificate of
-                        Electrical Safety — whether it&apos;s a quick fix or a full rewire.
+                        Quick fix or full rewire — every job meets Australian standards and comes
+                        with a Certificate of Electrical Safety.
                     </p>
                 </div>
 
@@ -206,8 +208,8 @@ function AreasTeaser() {
                     <span className="eyebrow">Where we work</span>
                     <h2 className="mt-3 text-3xl sm:text-4xl">Proudly serving South-East Melbourne</h2>
                     <p className="mt-4 text-lg text-navy-700/80">
-                        Based in {SITE.baseSuburb}, we cover the City of Casey, Cardinia and beyond —
-                        with fast local response times.
+                        Based in {SITE.baseSuburb}, we cover the City of Casey, Cardinia and beyond.
+                        Fast local response.
                     </p>
                 </div>
 

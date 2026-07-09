@@ -40,10 +40,9 @@ export default function AboutPage() {
                             A local electrician your neighbours trust
                         </h1>
                         <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
-                            Safety Pro Electrical is led by <strong className="text-white">Arif Daryabi</strong>,
-                            a licensed A-Grade electrician based in {SITE.baseSuburb}. Since {SITE.memberSince},
-                            we&apos;ve built our name the honest way — one quality job and one happy customer at
-                            a time — across South-East Melbourne.
+                            Safety Pro Electrical is run by <strong className="text-white">Arif Daryabi</strong>,
+                            a licensed A-Grade electrician in {SITE.baseSuburb}. Since {SITE.memberSince},
+                            we&apos;ve built our name one good job at a time, right across South-East Melbourne.
                         </p>
                     </div>
                     <div className="lg:justify-self-end">
@@ -65,23 +64,29 @@ export default function AboutPage() {
                     <div className="space-y-5 text-lg leading-relaxed text-navy-700/80">
                         <h2 className="text-3xl text-navy-900">Our story</h2>
                         <p>
-                            What started as a handful of jobs for friends and neighbours has grown into a
-                            trusted local electrical business — powered almost entirely by word of mouth and
-                            genuine recommendations.
+                            It started with a few jobs for friends and neighbours. Word of mouth did the rest.
                         </p>
                         <p>
-                            The approach is simple: turn up when we say we will, explain the work in plain
-                            English, charge a fair and upfront price, and leave every job safe and tidy. It&apos;s
-                            why customers across Cranbourne, Clyde North, Berwick, Pakenham, Dandenong and beyond
-                            keep calling us back — and recommending us to their family and friends.
+                            Our approach is simple. Turn up on time. Explain the work in plain English. Charge
+                            a fair, upfront price. Leave every job safe and tidy. That&apos;s why customers across
+                            Cranbourne, Clyde North, Berwick, Pakenham and Dandenong keep calling us back.
                         </p>
                         <p>
-                            From a single power point to a full home rewire, every job is completed to AS/NZS 3000
-                            standards and backed by a Certificate of Electrical Safety. No shortcuts, no surprises.
+                            From one power point to a full rewire, every job meets Australian standards
+                            (AS/NZS 3000) and comes with a Certificate of Electrical Safety. No shortcuts,
+                            no surprises.
                         </p>
                     </div>
 
-                    <div className="card h-fit p-7">
+                    <div className="space-y-6">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src="/images/clipsal-breakers.webp"
+                            alt="Close-up of circuit breakers in a residential switchboard"
+                            loading="lazy"
+                            className="aspect-[4/3] w-full rounded-xl2 border border-navy-700/10 object-cover shadow-card"
+                        />
+                        <div className="card h-fit p-7">
                         <h3 className="text-lg">Licensed &amp; insured</h3>
                         <ul className="mt-4 space-y-3 text-sm">
                             {SITE.licences.map((l) => (
@@ -100,9 +105,10 @@ export default function AboutPage() {
                                 <span className="text-navy-700/80">Fully insured · ABN {SITE.abn}</span>
                             </li>
                         </ul>
-                        <a href={SITE.phoneHref} className="btn-call mt-6 w-full">
-                            Call {SITE.phoneDisplay}
-                        </a>
+                            <a href={SITE.phoneHref} className="btn-call mt-6 w-full">
+                                Call {SITE.phoneDisplay}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>

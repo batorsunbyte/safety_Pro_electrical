@@ -10,7 +10,7 @@ export const SITE = {
     // Short value proposition used in hero + meta
     tagline: 'Licensed A-Grade Electricians in South-East Melbourne',
     shortPitch:
-        'Prompt, honest, fully licensed electrical work — from emergency call-outs to switchboard upgrades, EV chargers and full rewires. Trusted by hundreds of local homeowners.',
+        'Fully licensed electrical work — from emergencies to switchboards, EV chargers and rewires. Trusted by local homeowners.',
 
     // ---- Contact ----
     phoneDisplay: '0490 101 365',

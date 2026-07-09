@@ -33,7 +33,7 @@ export default function QuoteBlock({
                     <h2 className="mt-3 text-3xl sm:text-4xl">{heading}</h2>
                     <p className="mt-4 text-lg text-navy-700/80">
                         {subtitle ??
-                            `Fill in a few details and we'll get back to you fast with an honest, no-obligation quote. Prefer to talk? Call Arif directly — we answer the phone.`}
+                            `Fill in a few details and we'll get back to you fast. Prefer to talk? Call Arif — we answer the phone.`}
                     </p>
 
                     <ul className="mt-8 space-y-3">
@@ -41,7 +41,7 @@ export default function QuoteBlock({
                             'Free, no-obligation quotes',
                             'No call-out fee on quoted jobs',
                             'Fully licensed (A68377) & insured',
-                            'Local & quick — often same-day service',
+                            'Local — often same-day service',
                         ].map((t) => (
                             <li key={t} className="flex items-center gap-3 text-navy-800">
                                 <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-safety-green/15 text-safety-green">

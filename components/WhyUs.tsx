@@ -3,22 +3,22 @@ import { SITE } from '@/lib/site'
 const REASONS = [
     {
         title: 'Fully Licensed & Certified',
-        body: 'A-Grade licensed (A68377) and registered (REC-33712). Every job meets AS/NZS 3000 and comes with a Certificate of Electrical Safety.',
+        body: 'A-Grade licensed (A68377) and registered (REC-33712). Every job comes with a Certificate of Electrical Safety.',
         icon: 'shield',
     },
     {
         title: 'Upfront, Honest Pricing',
-        body: 'Free quotes and no call-out fee on quoted jobs. You get a clear price before we start — no surprises, no pressure.',
+        body: 'Free quotes, no call-out fee on quoted jobs. You get a clear price before we start.',
         icon: 'tag',
     },
     {
         title: 'Fast Local Response',
-        body: `Based in ${SITE.baseSuburb}, covering all of South-East Melbourne — often same-day, with 24/7 emergency call-outs.`,
+        body: `Based in ${SITE.baseSuburb}, covering South-East Melbourne. Often same-day, 24/7 for emergencies.`,
         icon: 'clock',
     },
     {
         title: 'Clean, Quality Workmanship',
-        body: 'Hundreds of local homeowners rate us 4.7★. We turn up on time, do it properly, and tidy up after ourselves.',
+        body: 'Local homeowners rate us 4.7★. We turn up on time, do it properly and tidy up.',
         icon: 'star',
     },
 ] as const
@@ -31,8 +31,7 @@ export default function WhyUs() {
                     <span className="eyebrow">Why homeowners choose us</span>
                     <h2 className="mt-3 text-3xl sm:text-4xl">Electrical work you can actually trust</h2>
                     <p className="mt-4 text-lg text-navy-700/80">
-                        No jargon, no shortcuts — just licensed, tidy, reliable work from an electrician
-                        your neighbours already recommend.
+                        Licensed, tidy, reliable work. No jargon, no shortcuts.
                     </p>
                 </div>
 

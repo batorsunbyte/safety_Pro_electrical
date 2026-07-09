@@ -4,17 +4,17 @@ const STEPS = [
     {
         n: '1',
         title: 'Call or request a quote',
-        body: 'Tell us what you need — a quick call or the online form is all it takes. For emergencies, we pick up 24/7.',
+        body: 'Tell us what you need — call or use the form. Emergencies? We pick up 24/7.',
     },
     {
         n: '2',
         title: 'Get an upfront price',
-        body: 'We assess the job, explain your options in plain English and give you a clear, fair price before any work starts.',
+        body: 'We explain your options and give you a clear price before work starts.',
     },
     {
         n: '3',
         title: 'Job done properly',
-        body: 'Licensed work, completed on time and tidied up — finished with a Certificate of Electrical Safety for your peace of mind.',
+        body: 'Licensed work, done on time and tidied up. You get a Certificate of Electrical Safety.',
     },
 ]
 
@@ -47,7 +47,7 @@ export default function Steps() {
                 {/* Ask at the moment the process feels easy */}
                 <div className="card mt-12 flex flex-col items-center gap-4 p-6 text-center md:flex-row md:justify-between md:text-left">
                     <p className="text-lg font-semibold text-navy-900">
-                        Step 1 takes two minutes — and most quotes come back within the hour.
+                        Step 1 takes two minutes. Most quotes come back within the hour.
                     </p>
                     <div className="flex flex-shrink-0 flex-col gap-3 sm:flex-row">
                         <a href={SITE.phoneHref} className="btn-call !px-4 !py-2.5 text-sm">

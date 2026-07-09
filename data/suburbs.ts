@@ -20,7 +20,7 @@ export const SUBURBS: Suburb[] = [
         name: 'Cranbourne East',
         council: 'City of Casey',
         localAngle:
-            'Our home base. New estates around Cranbourne East mean lots of EV charger installs, extra power points and downlight upgrades in modern family homes.',
+            'Our home base. In the new estates around Cranbourne East we mostly install EV chargers, extra power points and downlights in modern family homes.',
         priority: true,
     },
     {
@@ -28,7 +28,7 @@ export const SUBURBS: Suburb[] = [
         name: 'Cranbourne',
         council: 'City of Casey',
         localAngle:
-            'A mix of established homes and newer builds — we do everything here from switchboard upgrades on older properties to safety-switch compliance and rewires.',
+            'Cranbourne mixes established homes and newer builds. We do everything here — switchboard upgrades on older properties, safety-switch compliance and rewires.',
         priority: true,
     },
     {
@@ -44,7 +44,7 @@ export const SUBURBS: Suburb[] = [
         name: 'Narre Warren',
         council: 'City of Casey',
         localAngle:
-            'Established family homes across Narre Warren and Narre Warren South often need switchboard upgrades, ceiling fans, and lighting or power-point additions.',
+            'Narre Warren and Narre Warren South are full of established family homes. Common jobs: switchboard upgrades, ceiling fans, lighting and extra power points.',
         priority: true,
     },
     {
@@ -52,7 +52,7 @@ export const SUBURBS: Suburb[] = [
         name: 'Berwick',
         council: 'City of Casey',
         localAngle:
-            'From heritage streets to new estates, Berwick homes range widely — we handle renovations, rewires, safety upgrades and premium lighting installs.',
+            'Berwick runs from heritage streets to new estates. We handle renovations, rewires, safety upgrades and quality lighting installs across all of it.',
         priority: true,
     },
     {
@@ -60,7 +60,7 @@ export const SUBURBS: Suburb[] = [
         name: 'Officer',
         council: 'Cardinia Shire',
         localAngle:
-            'A growth corridor full of new families — EV chargers, safety switches and lighting for modern homes are our most-requested jobs in Officer.',
+            'Officer is a growth corridor full of new families. Our most-requested jobs here: EV chargers, safety switches and lighting for modern homes.',
         priority: true,
     },
     {
@@ -68,7 +68,7 @@ export const SUBURBS: Suburb[] = [
         name: 'Pakenham',
         council: 'Cardinia Shire',
         localAngle:
-            'Covering both older Pakenham homes and the new estates — switchboard upgrades, compliance work and full electrical fit-outs for renovations.',
+            'We cover older Pakenham homes and the new estates alike. Switchboard upgrades, compliance work and renovation fit-outs are our common jobs here.',
         priority: true,
     },
     {

@@ -36,8 +36,8 @@ export default function ServiceAreasIndex() {
                         Your local electrician across South-East Melbourne
                     </h1>
                     <p className="mt-5 max-w-2xl text-lg text-white/75">
-                        Based in {SITE.baseSuburb}, we cover the City of Casey, Cardinia Shire, Greater
-                        Dandenong, Knox, Monash and Frankston — with fast, friendly local service.
+                        Based in {SITE.baseSuburb}. We cover the City of Casey, Cardinia Shire,
+                        Greater Dandenong, Knox, Monash and Frankston.
                     </p>
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                         <a href={SITE.phoneHref} className="btn-call text-lg">
