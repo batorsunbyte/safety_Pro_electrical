@@ -105,9 +105,9 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* Bottom bar */}
+            {/* Bottom bar — extra mobile padding clears the fixed call bar */}
             <div className="border-t border-white/10">
-                <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-white/50 sm:flex-row">
+                <div className="container-x flex flex-col items-center justify-between gap-2 pb-28 pt-6 text-xs text-white/50 sm:flex-row lg:pb-6">
                     <p>
                         © {year} {SITE.name}. All rights reserved. ABN {SITE.abn}.
                     </p>

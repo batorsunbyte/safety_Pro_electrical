@@ -11,8 +11,14 @@ import JsonLd from '@/components/JsonLd'
 export const metadata: Metadata = {
     title: 'Service Areas — South-East Melbourne',
     description:
-        'Safety Pro Electrical services South-East Melbourne — Casey, Cardinia, Greater Dandenong, Knox, Monash and Frankston. Cranbourne, Clyde North, Narre Warren, Berwick, Officer, Pakenham, Dandenong & more.',
+        'Servicing Casey, Cardinia, Greater Dandenong, Knox, Monash and Frankston — Cranbourne, Clyde North, Berwick, Pakenham & more.',
     alternates: { canonical: '/service-areas/' },
+    openGraph: {
+        title: `Service Areas | ${SITE.name}`,
+        description: 'Your local electrician across South-East Melbourne — Casey, Cardinia, Dandenong & more.',
+        url: `${SITE.url}/service-areas/`,
+        images: [{ url: '/opengraph-image.png', width: 1200, height: 630 }],
+    },
 }
 
 const crumbs = [

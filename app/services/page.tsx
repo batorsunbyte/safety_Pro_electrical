@@ -12,8 +12,14 @@ import JsonLd from '@/components/JsonLd'
 export const metadata: Metadata = {
     title: 'Electrical Services',
     description:
-        'Full-service electrical work across South-East Melbourne: emergency call-outs, switchboard upgrades, safety switches, smoke alarms, EV chargers, lighting, power points and rewiring.',
+        'Electrical work across South-East Melbourne: emergencies, switchboards, safety switches, smoke alarms, EV chargers, lighting and rewiring.',
     alternates: { canonical: '/services/' },
+    openGraph: {
+        title: `Electrical Services | ${SITE.name}`,
+        description: 'Emergencies, switchboards, EV chargers, lighting and rewiring — licensed & insured.',
+        url: `${SITE.url}/services/`,
+        images: [{ url: '/opengraph-image.png', width: 1200, height: 630 }],
+    },
 }
 
 const crumbs = [

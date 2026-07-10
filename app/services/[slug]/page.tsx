@@ -24,12 +24,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     if (!s) return {}
     return {
         title: `${s.title} ${SITE.region}`,
-        description: `${s.intro} Licensed & insured, 4.7★ rated. Call ${SITE.phoneDisplay} for a free quote.`,
+        description: `${s.intro} Licensed & insured, 4.7★ rated. Free quotes.`,
         alternates: { canonical: `/services/${s.slug}/` },
         openGraph: {
+            type: 'website',
+            siteName: SITE.name,
+            locale: SITE.locale,
             title: `${s.title} | ${SITE.name}`,
             description: s.tagline,
             url: `${SITE.url}/services/${s.slug}/`,
+            images: [{ url: '/opengraph-image.png', width: 1200, height: 630 }],
         },
     }
 }

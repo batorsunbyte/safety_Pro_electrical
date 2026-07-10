@@ -11,8 +11,14 @@ import JsonLd from '@/components/JsonLd'
 export const metadata: Metadata = {
     title: 'Reviews',
     description:
-        'Read real customer reviews for Safety Pro Electrical — rated 4.7★ across South-East Melbourne for switchboards, EV chargers, lighting, rewiring and emergency electrical work.',
+        'Real customer reviews — rated 4.7★ across South-East Melbourne for switchboards, EV chargers, lighting, rewiring and emergency work.',
     alternates: { canonical: '/reviews/' },
+    openGraph: {
+        title: `Reviews | ${SITE.name}`,
+        description: 'Rated 4.7★ by South-East Melbourne homeowners — real, verified customer reviews.',
+        url: `${SITE.url}/reviews/`,
+        images: [{ url: '/opengraph-image.png', width: 1200, height: 630 }],
+    },
 }
 
 const crumbs = [

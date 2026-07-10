@@ -14,8 +14,14 @@ import { LogoMark } from '@/components/Logo'
 export const metadata: Metadata = {
     title: 'About Us',
     description:
-        'Safety Pro Electrical is a licensed A-Grade electrical business based in Cranbourne East, serving South-East Melbourne since 2022. Honest, safety-first work rated 4.7★.',
+        'Licensed A-Grade electrical business in Cranbourne East, serving South-East Melbourne since 2022. Honest, safety-first work rated 4.7★.',
     alternates: { canonical: '/about/' },
+    openGraph: {
+        title: `About Us | ${SITE.name}`,
+        description: 'Licensed A-Grade electricians in Cranbourne East, serving South-East Melbourne since 2022.',
+        url: `${SITE.url}/about/`,
+        images: [{ url: '/opengraph-image.png', width: 1200, height: 630 }],
+    },
 }
 
 const crumbs = [

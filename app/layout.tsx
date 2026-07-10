@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         template: `%s | ${SITE.name}`,
     },
     description:
-        'Licensed A-Grade electricians serving South-East Melbourne. Emergency call-outs, switchboard upgrades, EV chargers, safety switches, lighting & rewiring. Fast, honest, fully insured — 4.7★ rated.',
+        'Licensed A-Grade electricians in South-East Melbourne. Emergencies, switchboards, EV chargers, lighting & rewiring. Fast, honest, 4.7★ rated.',
     keywords: [
         'electrician South-East Melbourne',
         'electrician Cranbourne',
@@ -47,10 +47,9 @@ export const metadata: Metadata = {
             'Fast, honest, fully licensed electrical work across South-East Melbourne. Emergency, switchboards, EV chargers, safety switches, lighting & rewiring.',
         url: SITE.url,
     },
+    // twitter: only the card type — title/description fall back to each page's og:* values
     twitter: {
         card: 'summary_large_image',
-        title: `${SITE.name} | Licensed Electrician ${SITE.region}`,
-        description: 'Licensed A-Grade electricians serving South-East Melbourne. 4.7★ rated.',
     },
     robots: {
         index: true,
@@ -72,9 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     Skip to content
                 </a>
                 <Header />
-                <main id="main" className="pb-28 lg:pb-0">
-                    {children}
-                </main>
+                <main id="main">{children}</main>
                 <Footer />
                 <MobileCallBar />
             </body>

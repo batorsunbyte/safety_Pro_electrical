@@ -9,8 +9,14 @@ import JsonLd from '@/components/JsonLd'
 export const metadata: Metadata = {
     title: 'Contact & Free Quote',
     description:
-        'Contact Safety Pro Electrical for a free, no-obligation quote. Call 0490 101 365, message us on WhatsApp, or request a quote online. Licensed electrician servicing South-East Melbourne.',
+        'Get a free, no-obligation quote. Call 0490 101 365, WhatsApp us, or request a quote online. Licensed electrician in South-East Melbourne.',
     alternates: { canonical: '/contact/' },
+    openGraph: {
+        title: `Contact & Free Quote | ${SITE.name}`,
+        description: 'Free quotes — call, WhatsApp or use the online form. Licensed electrician in South-East Melbourne.',
+        url: `${SITE.url}/contact/`,
+        images: [{ url: '/opengraph-image.png', width: 1200, height: 630 }],
+    },
 }
 
 const crumbs = [

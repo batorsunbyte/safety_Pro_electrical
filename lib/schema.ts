@@ -20,7 +20,7 @@ export function localBusinessSchema() {
         name: SITE.name,
         description: SITE.shortPitch,
         url: SITE.url,
-        image: `${SITE.url}/og-image.png`,
+        image: `${SITE.url}/opengraph-image.png`,
         logo: `${SITE.url}/logo.png`,
         telephone: SITE.phoneHref.replace('tel:', ''),
         email: SITE.email,

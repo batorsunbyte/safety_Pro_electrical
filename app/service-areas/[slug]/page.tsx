@@ -25,12 +25,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     if (!s) return {}
     return {
         title: `Electrician ${s.name}`,
-        description: `Licensed A-Grade electrician servicing ${s.name} (${s.council}). Emergency call-outs, switchboards, EV chargers, safety switches, lighting & rewiring. 4.7★ rated. Call ${SITE.phoneDisplay}.`,
+        description: `Licensed A-Grade electrician in ${s.name}. Emergencies, switchboards, EV chargers, safety switches, lighting & rewiring. 4.7★ rated. Free quotes.`,
         alternates: { canonical: `/service-areas/${s.slug}/` },
         openGraph: {
+            type: 'website',
+            siteName: SITE.name,
+            locale: SITE.locale,
             title: `Electrician ${s.name} | ${SITE.name}`,
             description: `Your trusted local electrician in ${s.name}. Free quotes, fully licensed & insured.`,
             url: `${SITE.url}/service-areas/${s.slug}/`,
+            images: [{ url: '/opengraph-image.png', width: 1200, height: 630 }],
         },
     }
 }

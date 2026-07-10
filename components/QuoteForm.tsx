@@ -5,7 +5,7 @@ import { SITE } from '@/lib/site'
 import { SERVICES } from '@/data/services'
 import { SUBURBS, ALSO_SERVICING } from '@/data/suburbs'
 
-type Status = 'idle' | 'sending' | 'sent' | 'error'
+type Status = 'idle' | 'sending' | 'sent' | 'whatsapp' | 'error'
 
 const SUBURB_OPTIONS = [...SUBURBS.map((s) => s.name), ...ALSO_SERVICING].sort()
 
@@ -71,16 +71,16 @@ export default function QuoteForm({
         }
 
         // Fallback (no key yet): open WhatsApp with details pre-filled.
-        // Guard: if the browser blocks the popup / WhatsApp isn't available, DON'T fake success.
-        const win = window.open(
-            `${SITE.whatsappHref}?text=${encodeURIComponent(summary)}`,
-            '_blank',
-            'noopener',
-        )
-        setStatus(win ? 'sent' : 'error')
+        // NOTE: no 'noopener' feature string — window.open(..., 'noopener') returns null
+        // by spec even on success, which would falsely report an error. We null the
+        // opener manually instead; null here genuinely means the popup was blocked.
+        const win = window.open(`${SITE.whatsappHref}?text=${encodeURIComponent(summary)}`, '_blank')
+        if (win) win.opener = null
+        setStatus(win ? 'whatsapp' : 'error')
     }
 
-    if (status === 'sent') {
+    if (status === 'sent' || status === 'whatsapp') {
+        const viaWhatsapp = status === 'whatsapp'
         return (
             <div className="card p-8 text-center">
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-safety-green/15 text-safety-green">
@@ -88,9 +88,14 @@ export default function QuoteForm({
                         <path d="M20 6 9 17l-5-5" />
                     </svg>
                 </div>
-                <h3 className="mt-5 text-2xl">Thanks — request sent!</h3>
+                <h3 className="mt-5 text-2xl">
+                    {viaWhatsapp ? 'Almost done!' : 'Thanks — request sent!'}
+                </h3>
                 <p className="mt-2 text-navy-700/75">
-                    {SITE.responsePromise}. Need it sorted now? Give Arif a call.
+                    {viaWhatsapp
+                        ? 'Tap Send in the WhatsApp window to deliver your request. '
+                        : `${SITE.responsePromise}. `}
+                    Need it sorted now? Give Arif a call.
                 </p>
                 <a href={SITE.phoneHref} className="btn-call mt-6">
                     Call {SITE.phoneDisplay}
