@@ -62,8 +62,7 @@ export const SITE = {
     responsePromise: 'We answer fast — most quotes within the hour',
 
     // ---- Deployment ----
-    // TODO: confirm final domain before go-live.
-    url: 'https://safetyproelectrical.com.au',
+    url: 'https://safetypro-electrical.au',
     locale: 'en_AU',
 
     // Web3Forms access key for the quote form. Empty = form falls back to
